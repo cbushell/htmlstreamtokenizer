@@ -77,6 +77,14 @@ public class ParserTests {
 		parse("<>  <elementName <another >>>>>>>>");
 	}
 
+	@Test
+	public void shouldTreatWhitespaceAsDistinctToken(){
+		String html = "<b>    <i>Hallo world</b></i>";
+		List<Token> tokens = parse(html);
+		assertEquals(6, tokens.size());
+		assertEquals("<b>    <i>Hallo world</b></i>", join(tokens));
+	}
+	
 	private void expectElementToken(Token token, String value, Valid valid,
 			Empty empty) {
 		ElementToken elementToken = (ElementToken) token;
