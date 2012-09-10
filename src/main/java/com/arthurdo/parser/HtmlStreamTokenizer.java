@@ -26,6 +26,7 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 
 import com.arthurdo.charutils.CharUtils;
+import com.arthurdo.charutils.EscapeMapper;
 import com.arthurdo.charutils.Unescaper;
 
 /**
@@ -107,6 +108,8 @@ public class HtmlStreamTokenizer {
 		
 	private CharUtils charUtils = new CharUtils();
 
+	private Unescaper unescaper = new Unescaper(charUtils, new EscapeMapper());
+	
 	
 	/**
 	 * @deprecated use HtmlStreamTokenizer(Reader) instead. This version of the
@@ -231,7 +234,7 @@ public class HtmlStreamTokenizer {
 
 				if (m_buf.length() > 0 && state == STATE_TEXT) {
 					if (m_unescape && hasAmp) {
-						Unescaper.unescape(m_buf);
+						unescaper.unescape(m_buf);
 					}
 					return m_ttype = TT_TEXT;
 				} else
@@ -288,7 +291,7 @@ public class HtmlStreamTokenizer {
 
 					if (m_buf.length() > 0) {
 						if (m_unescape && hasAmp)
-							Unescaper.unescape(m_buf);
+							unescaper.unescape(m_buf);
 						return m_ttype = TT_TEXT;
 					}
 				}
@@ -638,7 +641,7 @@ public class HtmlStreamTokenizer {
 			String value = buf.substring(begin, end);
 
 			if (m_unescape) {
-				value = Unescaper.unescape(value);
+				value = unescaper.unescape(value);
 			}
 
 			tag.setParam(name, value);

@@ -12,6 +12,8 @@ import java.io.StringReader;
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.arthurdo.charutils.CharUtils;
+import com.arthurdo.charutils.EscapeMapper;
 import com.arthurdo.charutils.Unescaper;
 import com.arthurdo.parser.HtmlException;
 import com.arthurdo.parser.HtmlStreamTokenizer;
@@ -19,6 +21,10 @@ import com.arthurdo.parser.HtmlTag;
 
 public class ParserTestMinusDuplication {
 
+	private static Unescaper unescaper = new Unescaper(new CharUtils(),
+			new EscapeMapper());
+
+	
 	@Test
 	public void test4() {
 		String html = "</html>\n"
@@ -160,7 +166,7 @@ public class ParserTestMinusDuplication {
 					}
 				} else {
 					buf = tok.getStringValue();
-					Unescaper.unescape(buf);
+					unescaper.unescape(buf);
 					if (buf.length() > 0)
 						out.print(buf.toString());
 				}

@@ -7,12 +7,18 @@ import java.io.IOException;
 import java.io.Reader;
 import java.io.StringReader;
 
+import com.arthurdo.charutils.CharUtils;
+import com.arthurdo.charutils.EscapeMapper;
 import com.arthurdo.charutils.Unescaper;
 import com.arthurdo.parser.HtmlException;
 import com.arthurdo.parser.HtmlStreamTokenizer;
 import com.arthurdo.parser.HtmlTag;
 
 public class ParserTest {
+
+	private static Unescaper unescaper = new Unescaper(new CharUtils(),
+			new EscapeMapper());
+
 	public static void main(String[] args) {
 		try {
 			ParserTest app = new ParserTest();
@@ -54,7 +60,7 @@ public class ParserTest {
 				}
 			} else {
 				buf = tok.getStringValue();
-				Unescaper.unescape(buf);
+				unescaper.unescape(buf);
 				if (buf.length() > 0)
 					System.out.print(buf.toString());
 			}
@@ -90,7 +96,7 @@ public class ParserTest {
 					}
 				} else {
 					buf = tok.getStringValue();
-					Unescaper.unescape(buf);
+					unescaper.unescape(buf);
 					if (buf.length() > 0)
 						System.out.print(buf.toString());
 				}

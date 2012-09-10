@@ -3,9 +3,15 @@ package com.arthurdo.charutils;
 
 public class Unescaper {
 
-	private static CharUtils charUtils = new CharUtils();
+	private CharUtils charUtils;
+
+	private EscapeMapper escapeMapper;
+
 	
-	private static EscapeMapper escapeMappings = new EscapeMapper();
+	public Unescaper(CharUtils charUtils, EscapeMapper escapeMapper){
+		this.charUtils = charUtils;
+		this.escapeMapper = escapeMapper;
+	}
 
 	/**
 	 * Replaces HTML escape sequences with its character equivalent, e.g.
@@ -15,7 +21,7 @@ public class Unescaper {
 	 *            text buffer to unescape
 	 * @return a string with all HTML escape sequences removed
 	 */
-	public static String unescape(String buf) {
+	public String unescape(String buf) {
 		// quick check to see if there are any escape characters
 		if (buf.indexOf('&') == -1) {
 			return buf;
@@ -33,7 +39,7 @@ public class Unescaper {
 	 * @param buf
 	 *            will remove all HTML escape sequences from this buffer
 	 */
-	public static void unescape(StringBuffer buf) {
+	public void unescape(StringBuffer buf) {
 		int len = buf.length();
 		int i = 0;
 		int r = i;
@@ -81,7 +87,7 @@ public class Unescaper {
 		buf.setLength(r);
 	}
 
-	private static Character parseEscape(String s) {
+	private Character parseEscape(String s) {
 		int len = s.length();
 
 		if (len == 0) {
@@ -103,7 +109,7 @@ public class Unescaper {
 			}
 			ch = new Character((char) code);
 		} else {
-			ch = escapeMappings.get(s);
+			ch = escapeMapper.get(s);
 		}
 
 		return ch;
