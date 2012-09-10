@@ -304,7 +304,7 @@ public class HtmlStreamTokenizer {
 				break;
 
 			case STATE_WS: {
-				if (!isSpace(c)) {
+				if (!CharUtils.isSpace(c)) {
 					m_pushback = c;
 					m_state = STATE_TEXT;
 				} else {
@@ -381,8 +381,8 @@ public class HtmlStreamTokenizer {
 			}
 				break;
 			case STATE_ENTITYREF: {
-				if (c == ';' || c == '<' || (isPunct((char) c) && c != '#')
-						|| isSpace(c)) // accept any of these as terminating the
+				if (c == ';' || c == '<' || (CharUtils.isPunct((char) c) && c != '#')
+						|| CharUtils.isSpace(c)) // accept any of these as terminating the
 										// entity
 				{
 					if (c != ';')
@@ -418,7 +418,7 @@ public class HtmlStreamTokenizer {
 		int begin = 0;
 
 		// parse tag
-		while (idx < len && isSpace(buf.charAt(idx))) {
+		while (idx < len && CharUtils.isSpace(buf.charAt(idx))) {
 			idx++;
 		}
 
@@ -437,7 +437,7 @@ public class HtmlStreamTokenizer {
 
 		begin = idx;
 		// deal with empty tags like <img/>
-		while (idx < len && !isSpace(buf.charAt(idx))
+		while (idx < len && !CharUtils.isSpace(buf.charAt(idx))
 				&& buf.charAt(idx) != C_EMPTY) {
 			idx++;
 		}
@@ -483,37 +483,8 @@ public class HtmlStreamTokenizer {
 	private static final char C_DOUBLEQUOTE = '"';
 	private int m_tagquote;
 
-	private static final int CTYPE_LEN = 256;
-	private static byte m_ctype[] = new byte[CTYPE_LEN];
-	private static final byte CT_WHITESPACE = 1;
-
 	private boolean m_unescape = false;
 	private boolean m_getEntities = false; // return TT_ENTITYREFERENCE
-
-	static {
-		int len = m_ctype.length;
-
-		for (int i = 0; i < len; i++) {
-			m_ctype[i] = 0;
-		}
-
-		m_ctype[' '] = CT_WHITESPACE;
-		m_ctype['\r'] = CT_WHITESPACE;
-		m_ctype['\n'] = CT_WHITESPACE;
-		m_ctype['\t'] = CT_WHITESPACE;
-		for (int i = 0x0E; i <= 0x1F; i++) {
-			m_ctype[i] = CT_WHITESPACE;
-		}
-	}
-
-	private static boolean isSpace(int c) {
-		return c >= 0 && c < CTYPE_LEN ? (m_ctype[c] & CT_WHITESPACE) != 0
-				: false;
-	}
-
-	private static boolean isPunct(char c) {
-		return !Character.isLetterOrDigit(c);
-	}
 
 	public boolean isUnescaped() {
 		return m_unescape;
@@ -530,7 +501,7 @@ public class HtmlStreamTokenizer {
 
 		if (len - 1 >= idx) {
 			int end = len - 1;
-			while (end > idx && isSpace(buf.charAt(end)))
+			while (end > idx && CharUtils.isSpace(buf.charAt(end)))
 				// remove trailing whitespace
 				end--;
 			// todo: tag.setWhitespaceAtEnd(buf.substring(end, len-1) );
@@ -543,7 +514,7 @@ public class HtmlStreamTokenizer {
 
 		while (idx < len) {
 			begin = idx;
-			while (idx < len && isSpace(buf.charAt(idx)))
+			while (idx < len && CharUtils.isSpace(buf.charAt(idx)))
 				// skip space before attribute name
 				idx++;
 
@@ -577,7 +548,7 @@ public class HtmlStreamTokenizer {
 			} else {
 				// if not quoted look for whitespace or '=' to terminate
 				// attribute name
-				while (idx < len && !isSpace(buf.charAt(idx))
+				while (idx < len && !CharUtils.isSpace(buf.charAt(idx))
 						&& buf.charAt(idx) != '=')
 					idx++;
 			}
@@ -585,10 +556,10 @@ public class HtmlStreamTokenizer {
 			String name = buf.substring(begin, idx);
 
 			begin = idx;
-			if (idx < len && isSpace(buf.charAt(idx)))// skip whitespace after
+			if (idx < len && CharUtils.isSpace(buf.charAt(idx)))// skip whitespace after
 														// attribute name
 			{
-				while (idx < len && isSpace(buf.charAt(idx)))
+				while (idx < len && CharUtils.isSpace(buf.charAt(idx)))
 					idx++;
 			}
 
@@ -606,8 +577,8 @@ public class HtmlStreamTokenizer {
 			if (idx == len)
 				continue;
 
-			if (isSpace(buf.charAt(idx))) {
-				while (idx < len && isSpace(buf.charAt(idx)))
+			if (CharUtils.isSpace(buf.charAt(idx))) {
+				while (idx < len && CharUtils.isSpace(buf.charAt(idx)))
 					// skip past whitespace after '='
 					idx++;
 
@@ -652,7 +623,7 @@ public class HtmlStreamTokenizer {
 				end = idx;
 				idx++;
 			} else {// not quoted, whitespace terminates attribute value
-				while (idx < len && !isSpace(buf.charAt(idx)))
+				while (idx < len && !CharUtils.isSpace(buf.charAt(idx)))
 					idx++;
 				end = idx;
 			}
