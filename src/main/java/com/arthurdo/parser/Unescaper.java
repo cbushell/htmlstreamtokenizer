@@ -2,12 +2,6 @@ package com.arthurdo.parser;
 
 public class Unescaper {
 
-	private static final int CTYPE_LEN = 256;
-
-	private static final byte CT_WHITESPACE = 1;
-
-	private static byte m_ctype[] = new byte[CTYPE_LEN];
-
 	private static EscapeMappings escapes = new EscapeMappings();
 
 	/**
@@ -49,8 +43,8 @@ public class Unescaper {
 				for (; j < len; j++) {
 					buf.setCharAt(r++, ch);
 					ch = buf.charAt(j);
-					if (ch == ';' || ch == '<' || (isPunct(ch) && ch != '#')
-							|| isSpace(ch)) {
+					if (ch == ';' || ch == '<' || (CharUtils.isPunct(ch) && ch != '#')
+							|| CharUtils.isSpace(ch)) {
 						Character e = parseEscape(esc);
 						if (e != null) {
 							// found escape sequence
@@ -110,15 +104,6 @@ public class Unescaper {
 		}
 
 		return ch;
-	}
-
-	private static boolean isSpace(int c) {
-		return c >= 0 && c < CTYPE_LEN ? (m_ctype[c] & CT_WHITESPACE) != 0
-				: false;
-	}
-
-	private static boolean isPunct(char c) {
-		return !Character.isLetterOrDigit(c);
 	}
 
 }
