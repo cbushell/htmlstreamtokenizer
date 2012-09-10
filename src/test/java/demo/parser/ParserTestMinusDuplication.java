@@ -12,7 +12,7 @@ import java.io.StringReader;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.arthurdo.parser.Unescaper;
+import com.arthurdo.charutils.Unescaper;
 import com.arthurdo.parser.HtmlException;
 import com.arthurdo.parser.HtmlStreamTokenizer;
 import com.arthurdo.parser.HtmlTag;

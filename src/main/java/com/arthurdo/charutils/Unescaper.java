@@ -1,10 +1,11 @@
-package com.arthurdo.parser;
+package com.arthurdo.charutils;
+
 
 public class Unescaper {
 
 	private static CharUtils charUtils = new CharUtils();
 	
-	private static EscapeMappings escapeMappings = new EscapeMappings();
+	private static EscapeMapper escapeMappings = new EscapeMapper();
 
 	/**
 	 * Replaces HTML escape sequences with its character equivalent, e.g.

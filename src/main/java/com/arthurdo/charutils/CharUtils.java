@@ -1,4 +1,4 @@
-package com.arthurdo.parser;
+package com.arthurdo.charutils;
 
 public class CharUtils {
 

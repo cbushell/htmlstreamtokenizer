@@ -25,6 +25,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 
+import com.arthurdo.charutils.CharUtils;
+import com.arthurdo.charutils.Unescaper;
+
 /**
  * <p>
  * HtmlStreamTokenizer is an HTML parser that is similar to the StreamTokenizer
