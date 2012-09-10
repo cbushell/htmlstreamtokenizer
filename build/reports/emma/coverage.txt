@@ -1,0 +1,21 @@
+[EMMA v2.0.5312 report, generated Tue Jun 21 20:28:44 WST 2011]
+-------------------------------------------------------------------------------
+OVERALL COVERAGE SUMMARY:
+
+[class, %]	[method, %]	[block, %]	[line, %]	[name]
+71%  (5/7)!	53%  (53/100)!	78%  (4093/5270)!	70%  (710.3/1009)!	all classes
+
+OVERALL STATS SUMMARY:
+
+total packages:	2
+total classes:	7
+total methods:	100
+total executable files:	7
+total executable lines:	1009
+
+COVERAGE BREAKDOWN BY PACKAGE:
+
+[class, %]	[method, %]	[block, %]	[line, %]	[name]
+0%   (0/2)!	0%   (0/23)!	0%   (0/426)!	0%   (0/119)!	com.arthurdo.sax
+100% (5/5)	69%  (53/77)!	84%  (4093/4844)	80%  (710.3/890)!	com.arthurdo.parser
+-------------------------------------------------------------------------------

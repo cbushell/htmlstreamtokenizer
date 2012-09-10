@@ -1,0 +1,47 @@
+apply plugin: 'java'
+
+configurations{
+    emma
+}
+
+dependencies {
+    emma "emma:emma:2.0.5312"
+    emma "emma:emma_ant:2.0.5312"
+    testCompile group: 'junit', name: 'junit', version: '4.+'
+}
+
+repositories {
+    flatDir(dirs: file('lib'))
+}
+
+test{
+   jvmArgs "-Demma.coverage.out.file=build/tmp/emma/metadata.emma", "-Demma.coverage.out.merge=true"
+
+   doFirst{
+      ant.taskdef( resource:"emma_ant.properties", classpath: configurations.emma.asPath)
+        ant.path(id:"run.classpath"){
+            pathelement(location:sourceSets.main.classesDir.absolutePath )
+        }
+        ant.emma(verbosity:'info'){
+            instr(merge:"true", destdir:'build/tmp/emma/instr', instrpathref:"run.classpath", metadatafile:'build/tmp/emma/metadata.emma'){
+                instrpath{
+                    fileset(dir:sourceSets.main.classesDir.absolutePath, includes:"*.class")
+                }
+            }
+        }
+         setClasspath(files("$buildDir/tmp/emma/instr") + configurations.emma +  getClasspath())
+      }
+
+    doLast{
+        ant.emma(enabled:"true"){
+            report(sourcepath:"src/main/java"){
+                fileset(dir:"build/tmp/emma"){
+                    include(name:"*.emma")
+                }
+                txt(outfile:"build/reports/emma/coverage.txt")
+                html(outfile:"build/reports/emma/coverage.html")
+                xml(outfile:"build/reports/emma/coverage.xml")
+            }
+        }
+    }
+}

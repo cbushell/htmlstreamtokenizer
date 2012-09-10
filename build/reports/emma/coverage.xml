@@ -1,0 +1,632 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- EMMA v2.0.5312 report, generated Tue Jun 21 20:28:44 WST 2011 -->
+
+<report>
+  <stats>
+    <packages value="2"/>
+    <classes value="7"/>
+    <methods value="100"/>
+    <srcfiles value="7"/>
+    <srclines value="1009"/>
+  </stats>
+  <data>
+    <all name="all classes">
+      <coverage type="class, %" value="71%  (5/7)"/>
+      <coverage type="method, %" value="53%  (53/100)"/>
+      <coverage type="block, %" value="78%  (4093/5270)"/>
+      <coverage type="line, %" value="70%  (710.3/1009)"/>
+
+      <package name="com.arthurdo.sax">
+        <coverage type="class, %" value="0%   (0/2)"/>
+        <coverage type="method, %" value="0%   (0/23)"/>
+        <coverage type="block, %" value="0%   (0/426)"/>
+        <coverage type="line, %" value="0%   (0/119)"/>
+
+        <srcfile name="SAXDriver.java">
+          <coverage type="class, %" value="0%   (0/1)"/>
+          <coverage type="method, %" value="0%   (0/16)"/>
+          <coverage type="block, %" value="0%   (0/404)"/>
+          <coverage type="line, %" value="0%   (0/111)"/>
+
+          <class name="SAXDriver">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/16)"/>
+            <coverage type="block, %" value="0%   (0/404)"/>
+            <coverage type="line, %" value="0%   (0/111)"/>
+
+            <method name="&lt;static initializer&gt;">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/5)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="SAXDriver (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/15)"/>
+              <coverage type="line, %" value="0%   (0/6)"/>
+            </method>
+            <method name="SAXDriver (DocumentHandler): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/18)"/>
+              <coverage type="line, %" value="0%   (0/7)"/>
+            </method>
+            <method name="getCharArray (StringBuffer, int): char []">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/11)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+            <method name="getColumnNumber (): int">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/2)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="getLineNumber (): int">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/11)"/>
+              <coverage type="line, %" value="0%   (0/4)"/>
+            </method>
+            <method name="getPublicId (): String">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="getSystemId (): String">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="parse (HtmlStreamTokenizer): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/214)"/>
+              <coverage type="line, %" value="0%   (0/56)"/>
+            </method>
+            <method name="parse (InputSource): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/50)"/>
+              <coverage type="line, %" value="0%   (0/12)"/>
+            </method>
+            <method name="parse (String): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/44)"/>
+              <coverage type="line, %" value="0%   (0/12)"/>
+            </method>
+            <method name="setDTDHandler (DTDHandler): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/4)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+            <method name="setDocumentHandler (DocumentHandler): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/4)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+            <method name="setEntityResolver (EntityResolver): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/4)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+            <method name="setErrorHandler (ErrorHandler): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/4)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+            <method name="setLocale (Locale): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/12)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+          </class>
+        </srcfile>
+        <srcfile name="SAXElement.java">
+          <coverage type="class, %" value="0%   (0/1)"/>
+          <coverage type="method, %" value="0%   (0/7)"/>
+          <coverage type="block, %" value="0%   (0/22)"/>
+          <coverage type="line, %" value="0%   (0/8)"/>
+
+          <class name="SAXElement">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/7)"/>
+            <coverage type="block, %" value="0%   (0/22)"/>
+            <coverage type="line, %" value="0%   (0/8)"/>
+
+            <method name="SAXElement (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+            <method name="getLength (): int">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="getName (int): String">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/4)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="getType (String): String">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/2)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="getType (int): String">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/2)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="getValue (String): String">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/4)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="getValue (int): String">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/4)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+          </class>
+        </srcfile>
+      </package>
+      <package name="com.arthurdo.parser">
+        <coverage type="class, %" value="100% (5/5)"/>
+        <coverage type="method, %" value="69%  (53/77)"/>
+        <coverage type="block, %" value="84%  (4093/4844)"/>
+        <coverage type="line, %" value="80%  (710.3/890)"/>
+
+        <srcfile name="HtmlException.java">
+          <coverage type="class, %" value="100% (1/1)"/>
+          <coverage type="method, %" value="50%  (1/2)"/>
+          <coverage type="block, %" value="57%  (4/7)"/>
+          <coverage type="line, %" value="50%  (2/4)"/>
+
+          <class name="HtmlException">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="50%  (1/2)"/>
+            <coverage type="block, %" value="57%  (4/7)"/>
+            <coverage type="line, %" value="50%  (2/4)"/>
+
+            <method name="HtmlException (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+            <method name="HtmlException (String): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (4/4)"/>
+              <coverage type="line, %" value="100% (2/2)"/>
+            </method>
+          </class>
+        </srcfile>
+        <srcfile name="HtmlStreamTokenizer.java">
+          <coverage type="class, %" value="100% (1/1)"/>
+          <coverage type="method, %" value="60%  (12/20)"/>
+          <coverage type="block, %" value="77%  (1756/2276)"/>
+          <coverage type="line, %" value="73%  (300.3/411)"/>
+
+          <class name="HtmlStreamTokenizer">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="60%  (12/20)"/>
+            <coverage type="block, %" value="77%  (1756/2276)"/>
+            <coverage type="line, %" value="73%  (300.3/411)"/>
+
+            <method name="HtmlStreamTokenizer (InputStream): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/10)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+            <method name="enterCDATAMode (char [], boolean): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/10)"/>
+              <coverage type="line, %" value="0%   (0/4)"/>
+            </method>
+            <method name="getLineNumber (): int">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="getRawString (): String">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/59)"/>
+              <coverage type="line, %" value="0%   (0/6)"/>
+            </method>
+            <method name="isCDATA (): boolean">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="isUnescaped (): boolean">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="setUnescaped (boolean): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/4)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+            <method name="unescape (String): String">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/17)"/>
+              <coverage type="line, %" value="0%   (0/5)"/>
+            </method>
+            <method name="parseEscape (String): Character">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="36%  (21/59)"/>
+              <coverage type="line, %" value="44%  (7/16)"/>
+            </method>
+            <method name="nextToken (): int">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="46%  (242/527)"/>
+              <coverage type="line, %" value="55%  (62.4/113)"/>
+            </method>
+            <method name="parseParams (HtmlTag, String, int): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="76%  (235/308)"/>
+              <coverage type="line, %" value="70%  (60/86)"/>
+            </method>
+            <method name="unescape (StringBuffer): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="92%  (105/114)"/>
+              <coverage type="line, %" value="94%  (31/33)"/>
+            </method>
+            <method name="parseTag (StringBuffer, HtmlTag): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="94%  (73/78)"/>
+              <coverage type="line, %" value="95%  (20/21)"/>
+            </method>
+            <method name="isSpace (int): boolean">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="94%  (16/17)"/>
+              <coverage type="line, %" value="94%  (0.9/1)"/>
+            </method>
+            <method name="&lt;static initializer&gt;">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (998/998)"/>
+              <coverage type="line, %" value="100% (99/99)"/>
+            </method>
+            <method name="HtmlStreamTokenizer (Reader): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (50/50)"/>
+              <coverage type="line, %" value="100% (16/16)"/>
+            </method>
+            <method name="getStringValue (): StringBuffer">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (3/3)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="getTokenType (): int">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (3/3)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="getWhiteSpace (): StringBuffer">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (3/3)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="isPunct (char): boolean">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (7/7)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+          </class>
+        </srcfile>
+        <srcfile name="Table.java">
+          <coverage type="class, %" value="100% (1/1)"/>
+          <coverage type="method, %" value="81%  (17/21)"/>
+          <coverage type="block, %" value="80%  (620/779)"/>
+          <coverage type="line, %" value="78%  (173/223)"/>
+
+          <class name="Table">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="81%  (17/21)"/>
+            <coverage type="block, %" value="80%  (620/779)"/>
+            <coverage type="line, %" value="78%  (173/223)"/>
+
+            <method name="getColumns (): int">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/6)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="getRowTag (int): HtmlTag">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/13)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+            <method name="parseTable (InputStream): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/7)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+            <method name="pushBackToken (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/27)"/>
+              <coverage type="line, %" value="0%   (0/7)"/>
+            </method>
+            <method name="parseCol (): boolean">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="51%  (64/126)"/>
+              <coverage type="line, %" value="51%  (19.5/38)"/>
+            </method>
+            <method name="beginCell (HtmlTag): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="69%  (29/42)"/>
+              <coverage type="line, %" value="62%  (10/16)"/>
+            </method>
+            <method name="parseRow (): boolean">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="83%  (53/64)"/>
+              <coverage type="line, %" value="78%  (19.5/25)"/>
+            </method>
+            <method name="nextToken (): int">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="84%  (21/25)"/>
+              <coverage type="line, %" value="83%  (5/6)"/>
+            </method>
+            <method name="organizeRowCol (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="95%  (247/261)"/>
+              <coverage type="line, %" value="93%  (56/60)"/>
+            </method>
+            <method name="parseTable (HtmlStreamTokenizer, HtmlTag): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="98%  (81/83)"/>
+              <coverage type="line, %" value="93%  (26/28)"/>
+            </method>
+            <method name="Table (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (41/41)"/>
+              <coverage type="line, %" value="100% (13/13)"/>
+            </method>
+            <method name="addToCell (Object): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (5/5)"/>
+              <coverage type="line, %" value="100% (2/2)"/>
+            </method>
+            <method name="elementAt (int, int): TableCell">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (7/7)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="endCell (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (4/4)"/>
+              <coverage type="line, %" value="100% (2/2)"/>
+            </method>
+            <method name="getRows (): int">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (4/4)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="getStringValue (): StringBuffer">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (3/3)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="getTableTag (): HtmlTag">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (3/3)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="getTokenType (): int">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (3/3)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="getWhiteSpace (): StringBuffer">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (3/3)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="newRow (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (12/12)"/>
+              <coverage type="line, %" value="100% (4/4)"/>
+            </method>
+            <method name="parseTable (Reader): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (40/40)"/>
+              <coverage type="line, %" value="100% (10/10)"/>
+            </method>
+          </class>
+        </srcfile>
+        <srcfile name="TableCell.java">
+          <coverage type="class, %" value="100% (1/1)"/>
+          <coverage type="method, %" value="60%  (6/10)"/>
+          <coverage type="block, %" value="87%  (99/114)"/>
+          <coverage type="line, %" value="86%  (25/29)"/>
+
+          <class name="TableCell">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="60%  (6/10)"/>
+            <coverage type="block, %" value="87%  (99/114)"/>
+            <coverage type="line, %" value="86%  (25/29)"/>
+
+            <method name="elementAt (int): Object">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/5)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="getCellTag (): HtmlTag">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="isSpanned (): boolean">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="size (): int">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/4)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="TableCell (int, int): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (29/29)"/>
+              <coverage type="line, %" value="100% (10/10)"/>
+            </method>
+            <method name="TableCell (int, int, HtmlTag): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (29/29)"/>
+              <coverage type="line, %" value="100% (10/10)"/>
+            </method>
+            <method name="addElement (Object): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (5/5)"/>
+              <coverage type="line, %" value="100% (2/2)"/>
+            </method>
+            <method name="getCharacterData (): String">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (30/30)"/>
+              <coverage type="line, %" value="100% (6/6)"/>
+            </method>
+            <method name="getColSpan (): int">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (3/3)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="getRowSpan (): int">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (3/3)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+          </class>
+        </srcfile>
+        <srcfile name="HtmlTag.java">
+          <coverage type="class, %" value="100% (1/1)"/>
+          <coverage type="method, %" value="71%  (17/24)"/>
+          <coverage type="block, %" value="97%  (1614/1668)"/>
+          <coverage type="line, %" value="94%  (210/223)"/>
+
+          <class name="HtmlTag">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="71%  (17/24)"/>
+            <coverage type="block, %" value="97%  (1614/1668)"/>
+            <coverage type="line, %" value="94%  (210/223)"/>
+
+            <method name="getParamCount (): int">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/4)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="getParamName (int): String">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/6)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="getParamNames (): Enumeration">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/4)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="getParamValue (int): String">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/6)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="getParamValues (): Enumeration">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/4)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="hasParam (String): boolean">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/8)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="removeParam (String): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/16)"/>
+              <coverage type="line, %" value="0%   (0/5)"/>
+            </method>
+            <method name="setTag (String): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="74%  (17/23)"/>
+              <coverage type="line, %" value="75%  (6/8)"/>
+            </method>
+            <method name="&lt;static initializer&gt;">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (1340/1340)"/>
+              <coverage type="line, %" value="100% (143/143)"/>
+            </method>
+            <method name="HtmlTag (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (25/25)"/>
+              <coverage type="line, %" value="100% (8/8)"/>
+            </method>
+            <method name="HtmlTag (HtmlTag): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (56/56)"/>
+              <coverage type="line, %" value="100% (14/14)"/>
+            </method>
+            <method name="getIntParam (String): int">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (5/5)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="getParam (String): String">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (15/15)"/>
+              <coverage type="line, %" value="100% (4/4)"/>
+            </method>
+            <method name="getTagString (): String">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (3/3)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="getTagType (): int">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (3/3)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="indexOfName (String): int">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (23/23)"/>
+              <coverage type="line, %" value="100% (5/5)"/>
+            </method>
+            <method name="isEmpty (): boolean">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (3/3)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="isEndTag (): boolean">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (3/3)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="reset (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (19/19)"/>
+              <coverage type="line, %" value="100% (7/7)"/>
+            </method>
+            <method name="setEmpty (boolean): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (4/4)"/>
+              <coverage type="line, %" value="100% (2/2)"/>
+            </method>
+            <method name="setEndTag (boolean): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (4/4)"/>
+              <coverage type="line, %" value="100% (2/2)"/>
+            </method>
+            <method name="setParam (String, String): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (9/9)"/>
+              <coverage type="line, %" value="100% (3/3)"/>
+            </method>
+            <method name="setWhitespace (String, String, String): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (1/1)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="toString (): String">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (84/84)"/>
+              <coverage type="line, %" value="100% (16/16)"/>
+            </method>
+          </class>
+        </srcfile>
+      </package>
+    </all>
+  </data>
+</report>
