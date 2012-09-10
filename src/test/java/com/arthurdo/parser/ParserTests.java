@@ -1,14 +1,15 @@
 package com.arthurdo.parser;
 
+import static junit.framework.Assert.assertEquals;
+
+import java.util.List;
+
+import org.junit.Test;
+
 import com.arthurdo.parser.helper.ElementToken;
 import com.arthurdo.parser.helper.OtherToken;
 import com.arthurdo.parser.helper.Token;
 import com.arthurdo.parser.helper.TokenHelper;
-import org.junit.Test;
-
-import java.util.List;
-
-import static junit.framework.Assert.assertEquals;
 
 public class ParserTests {
 
