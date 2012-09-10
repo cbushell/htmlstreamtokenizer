@@ -2,7 +2,9 @@ package com.arthurdo.parser;
 
 public class Unescaper {
 
-	private static EscapeMappings escapes = new EscapeMappings();
+	private static CharUtils charUtils = new CharUtils();
+	
+	private static EscapeMappings escapeMappings = new EscapeMappings();
 
 	/**
 	 * Replaces HTML escape sequences with its character equivalent, e.g.
@@ -43,8 +45,8 @@ public class Unescaper {
 				for (; j < len; j++) {
 					buf.setCharAt(r++, ch);
 					ch = buf.charAt(j);
-					if (ch == ';' || ch == '<' || (CharUtils.isPunct(ch) && ch != '#')
-							|| CharUtils.isSpace(ch)) {
+					if (ch == ';' || ch == '<' || (charUtils.isPunct(ch) && ch != '#')
+							|| charUtils.isSpace(ch)) {
 						Character e = parseEscape(esc);
 						if (e != null) {
 							// found escape sequence
@@ -100,7 +102,7 @@ public class Unescaper {
 			}
 			ch = new Character((char) code);
 		} else {
-			ch = escapes.get(s);
+			ch = escapeMappings.get(s);
 		}
 
 		return ch;

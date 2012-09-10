@@ -101,6 +101,10 @@ public class HtmlStreamTokenizer {
 	 */
 	public static final int TT_ENTITYREFERENCE = -6;
 
+		
+	private CharUtils charUtils = new CharUtils();
+
+	
 	/**
 	 * @deprecated use HtmlStreamTokenizer(Reader) instead. This version of the
 	 *             constructor can lead to 10x slower code because of the
@@ -304,7 +308,7 @@ public class HtmlStreamTokenizer {
 				break;
 
 			case STATE_WS: {
-				if (!CharUtils.isSpace(c)) {
+				if (!charUtils.isSpace(c)) {
 					m_pushback = c;
 					m_state = STATE_TEXT;
 				} else {
@@ -381,8 +385,8 @@ public class HtmlStreamTokenizer {
 			}
 				break;
 			case STATE_ENTITYREF: {
-				if (c == ';' || c == '<' || (CharUtils.isPunct((char) c) && c != '#')
-						|| CharUtils.isSpace(c)) // accept any of these as terminating the
+				if (c == ';' || c == '<' || (charUtils.isPunct((char) c) && c != '#')
+						|| charUtils.isSpace(c)) // accept any of these as terminating the
 										// entity
 				{
 					if (c != ';')
@@ -418,7 +422,7 @@ public class HtmlStreamTokenizer {
 		int begin = 0;
 
 		// parse tag
-		while (idx < len && CharUtils.isSpace(buf.charAt(idx))) {
+		while (idx < len && charUtils.isSpace(buf.charAt(idx))) {
 			idx++;
 		}
 
@@ -437,7 +441,7 @@ public class HtmlStreamTokenizer {
 
 		begin = idx;
 		// deal with empty tags like <img/>
-		while (idx < len && !CharUtils.isSpace(buf.charAt(idx))
+		while (idx < len && !charUtils.isSpace(buf.charAt(idx))
 				&& buf.charAt(idx) != C_EMPTY) {
 			idx++;
 		}
@@ -501,7 +505,7 @@ public class HtmlStreamTokenizer {
 
 		if (len - 1 >= idx) {
 			int end = len - 1;
-			while (end > idx && CharUtils.isSpace(buf.charAt(end)))
+			while (end > idx && charUtils.isSpace(buf.charAt(end)))
 				// remove trailing whitespace
 				end--;
 			// todo: tag.setWhitespaceAtEnd(buf.substring(end, len-1) );
@@ -514,7 +518,7 @@ public class HtmlStreamTokenizer {
 
 		while (idx < len) {
 			begin = idx;
-			while (idx < len && CharUtils.isSpace(buf.charAt(idx)))
+			while (idx < len && charUtils.isSpace(buf.charAt(idx)))
 				// skip space before attribute name
 				idx++;
 
@@ -548,7 +552,7 @@ public class HtmlStreamTokenizer {
 			} else {
 				// if not quoted look for whitespace or '=' to terminate
 				// attribute name
-				while (idx < len && !CharUtils.isSpace(buf.charAt(idx))
+				while (idx < len && !charUtils.isSpace(buf.charAt(idx))
 						&& buf.charAt(idx) != '=')
 					idx++;
 			}
@@ -556,10 +560,10 @@ public class HtmlStreamTokenizer {
 			String name = buf.substring(begin, idx);
 
 			begin = idx;
-			if (idx < len && CharUtils.isSpace(buf.charAt(idx)))// skip whitespace after
+			if (idx < len && charUtils.isSpace(buf.charAt(idx)))// skip whitespace after
 														// attribute name
 			{
-				while (idx < len && CharUtils.isSpace(buf.charAt(idx)))
+				while (idx < len && charUtils.isSpace(buf.charAt(idx)))
 					idx++;
 			}
 
@@ -577,8 +581,8 @@ public class HtmlStreamTokenizer {
 			if (idx == len)
 				continue;
 
-			if (CharUtils.isSpace(buf.charAt(idx))) {
-				while (idx < len && CharUtils.isSpace(buf.charAt(idx)))
+			if (charUtils.isSpace(buf.charAt(idx))) {
+				while (idx < len && charUtils.isSpace(buf.charAt(idx)))
 					// skip past whitespace after '='
 					idx++;
 
@@ -623,7 +627,7 @@ public class HtmlStreamTokenizer {
 				end = idx;
 				idx++;
 			} else {// not quoted, whitespace terminates attribute value
-				while (idx < len && !CharUtils.isSpace(buf.charAt(idx)))
+				while (idx < len && !charUtils.isSpace(buf.charAt(idx)))
 					idx++;
 				end = idx;
 			}
