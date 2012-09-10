@@ -611,12 +611,9 @@ public class HtmlStreamTokenizer
 	private static final int CTYPE_LEN = 256;
     private static byte m_ctype[] = new byte[CTYPE_LEN];
     private static final byte CT_WHITESPACE = 1;
-    private static final byte CT_DIGIT = 2;
-    private static final byte CT_ALPHA = 4;
-    private static final byte CT_QUOTE = 8;
-    private static final byte CT_COMMENT = 16;
 
-	private static Hashtable m_escapes = new Hashtable();
+	private static Hashtable<String, Character> m_escapes = new Hashtable<String, Character>();
+	
 	private boolean m_unescape = false;
 	private boolean m_getEntities = false; //return TT_ENTITYREFERENCE
 

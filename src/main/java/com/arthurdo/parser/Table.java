@@ -19,9 +19,11 @@
 
 package com.arthurdo.parser;
 
-import java.io.*;
-import java.util.*;
-import java.awt.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.util.Vector;
 
 /**
  * <p><i>Null Cells and Phantom Rows</i>

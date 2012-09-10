@@ -19,7 +19,9 @@
 
 package com.arthurdo.parser;
 
-import java.util.*;
+import java.util.Enumeration;
+import java.util.Hashtable;
+import java.util.Vector;
 
 /**
  * HtmlTag is a helper class to store parsed tag information.
@@ -39,8 +41,8 @@ public class HtmlTag
 		m_tag = new String(orig.m_tag);
 		m_ttype = orig.m_ttype;
 		m_endtag = orig.m_endtag;
-		m_names = (Vector)orig.m_names.clone();
-		m_values = (Vector)orig.m_values.clone();
+		m_names = (Vector<String>)orig.m_names.clone();
+		m_values = (Vector<String>)orig.m_values.clone();
 //		m_params = (Hashtable)orig.m_params.clone();
 //		m_originalParamNames = (Hashtable)orig.m_originalParamNames.clone();
 		m_empty = orig.m_empty;
@@ -103,7 +105,7 @@ public class HtmlTag
 	{
 		final int idx = indexOfName(name);
 		if (idx != -1)
-			return (String)m_values.elementAt(idx);
+			return m_values.elementAt(idx);
 
 		return null;
 	}
@@ -116,7 +118,7 @@ public class HtmlTag
 	 */
 	public String getParamName(int i)
 	{
-		return (String)m_names.elementAt(i);
+		return m_names.elementAt(i);
 	}
 
 	/**
@@ -127,7 +129,7 @@ public class HtmlTag
 	 */
 	public String getParamValue(int i)
 	{
-		return (String)m_values.elementAt(i);
+		return m_values.elementAt(i);
 	}
 
 	/**
@@ -189,7 +191,7 @@ public class HtmlTag
 	/**
 	 * @return	an enumeration of the parameter names.
 	 */
-	public Enumeration getParamNames()
+	public Enumeration<String> getParamNames()
 	{
 		return m_names.elements();
 	}
@@ -197,7 +199,7 @@ public class HtmlTag
 	/**
 	 * @return	an enumeration of the parameter values.
 	 */
-	public Enumeration getParamValues()
+	public Enumeration<String> getParamValues()
 	{
 		return m_values.elements();
 	}
@@ -235,9 +237,9 @@ public class HtmlTag
 		final int size = m_names.size();
 		for (int i=0; i<size; i++)
 		{
-			String name = (String)m_names.elementAt(i);
+			String name = m_names.elementAt(i);
 			tag.append(" " + name);
-			String value = (String)m_values.elementAt(i);
+			String value = m_values.elementAt(i);
 			if (value.length() > 0)
 				tag.append("=\"" + value + "\"");
 		}
@@ -432,7 +434,7 @@ public class HtmlTag
 	{
 		final int size = m_names.size();
 		for (int i=0; i<size; i++)
-			if (name.equalsIgnoreCase((String)m_names.elementAt(i)))
+			if (name.equalsIgnoreCase(m_names.elementAt(i)))
 				return i;
 
 		return -1;
@@ -441,9 +443,9 @@ public class HtmlTag
 	private String m_tag = null;
 	private int m_ttype = T_UNKNOWN;
 	private boolean m_endtag = false;
-	private Vector m_names = new Vector();
-	private Vector m_values = new Vector();
-	private static Hashtable m_tags = new Hashtable();
+	private Vector<String> m_names = new Vector<String>();
+	private Vector<String> m_values = new Vector<String>();
+	private static Hashtable<String, Integer> m_tags = new Hashtable<String, Integer>();
 	private boolean m_empty = false;
 
 	static

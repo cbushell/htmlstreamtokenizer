@@ -1,11 +1,5 @@
 package com.arthurdo.parser.helper;
 
-import com.arthurdo.parser.HtmlStreamTokenizer;
-
-import java.io.IOException;
-import java.io.StringReader;
-import java.util.ArrayList;
-import java.util.List;
 
 abstract public class Token {
 

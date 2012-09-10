@@ -19,17 +19,13 @@
 
 package com.arthurdo.parser;
 
-import java.lang.Exception;
-
-public class HtmlException extends Exception
-{
-	public HtmlException()
-	{
+public class HtmlException extends Exception {
+	
+	public HtmlException() {
+		
 	}
 
-	public HtmlException(String s)
-	{
+	public HtmlException(String s) {
 		super(s);
 	}
 }
-
