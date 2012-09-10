@@ -8,7 +8,7 @@ public class EscapesTest {
 
 	@Test
 	public void foo(){
-		Escapes escapes = new Escapes();
+		EscapeMappings escapes = new EscapeMappings();
 		Assert.assertEquals(new Character('\u00c1'), escapes.get("Aacute"));
 	}
 }

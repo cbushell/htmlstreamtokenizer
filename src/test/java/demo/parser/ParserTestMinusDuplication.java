@@ -12,12 +12,13 @@ import java.io.StringReader;
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.arthurdo.parser.Unescaper;
 import com.arthurdo.parser.HtmlException;
 import com.arthurdo.parser.HtmlStreamTokenizer;
 import com.arthurdo.parser.HtmlTag;
 
 public class ParserTestMinusDuplication {
-	
+
 	@Test
 	public void test4() {
 		String html = "</html>\n"
@@ -159,7 +160,7 @@ public class ParserTestMinusDuplication {
 					}
 				} else {
 					buf = tok.getStringValue();
-					HtmlStreamTokenizer.unescape(buf);
+					Unescaper.unescape(buf);
 					if (buf.length() > 0)
 						out.print(buf.toString());
 				}

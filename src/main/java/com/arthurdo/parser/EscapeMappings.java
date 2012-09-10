@@ -2,10 +2,10 @@ package com.arthurdo.parser;
 
 import java.util.Hashtable;
 
-public class Escapes {
+public class EscapeMappings {
 	private static Hashtable<String, Character> escapes = new Hashtable<String, Character>();
 
-	public Escapes(){
+	public EscapeMappings(){
 		escapes.put(new String("Aacute"), new Character('\u00c1'));
 		escapes.put(new String("aacute"), new Character('\u00e1'));
 		escapes.put(new String("Acirc"), new Character('\u00c2'));

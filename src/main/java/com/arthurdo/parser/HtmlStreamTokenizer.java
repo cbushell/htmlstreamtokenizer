@@ -223,8 +223,9 @@ public class HtmlStreamTokenizer {
 				m_state = STATE_EOF;
 
 				if (m_buf.length() > 0 && state == STATE_TEXT) {
-					if (m_unescape && hasAmp)
-						unescape(m_buf);
+					if (m_unescape && hasAmp) {
+						Unescaper.unescape(m_buf);
+					}
 					return m_ttype = TT_TEXT;
 				} else
 					return m_ttype = TT_EOF;
@@ -280,7 +281,7 @@ public class HtmlStreamTokenizer {
 
 					if (m_buf.length() > 0) {
 						if (m_unescape && hasAmp)
-							unescape(m_buf);
+							Unescaper.unescape(m_buf);
 						return m_ttype = TT_TEXT;
 					}
 				}
@@ -448,79 +449,6 @@ public class HtmlStreamTokenizer {
 		parseParams(tag, buf, idx);
 	}
 
-	/**
-	 * Replaces HTML escape sequences with its character equivalent, e.g.
-	 * <b>&amp;amp;copy;</b> becomes <b>&amp;copy;</b>.
-	 * 
-	 * @param buf
-	 *            text buffer to unescape
-	 * @return a string with all HTML escape sequences removed
-	 */
-	public static String unescape(String buf) {
-		// quick check to see if there are any escape characters
-		if (buf.indexOf('&') == -1)
-			return buf;
-
-		StringBuffer b = new StringBuffer(buf);
-		unescape(b);
-		return b.toString();
-	}
-
-	/**
-	 * Replaces HTML escape sequences with its character equivalent, e.g.
-	 * <b>&amp;copy;</b> becomes <b>&copy;</b>.
-	 * 
-	 * @param buf
-	 *            will remove all HTML escape sequences from this buffer
-	 */
-	public static void unescape(StringBuffer buf) {
-		int len = buf.length();
-		int i = 0;
-		int r = i;
-		while (i < len) {
-			char ch = buf.charAt(i);
-			if (ch == '&') {
-				int saver = r;
-				String esc = "";
-				int j = i + 1;
-				for (; j < len; j++) {
-					buf.setCharAt(r++, ch);
-					ch = buf.charAt(j);
-					if (ch == ';' || ch == '<' || (isPunct(ch) && ch != '#')
-							|| isSpace(ch)) {
-						Character e = parseEscape(esc);
-						if (e != null) {
-							// found escape sequence
-							// as opposed to false or unrecognized escape, e.g.
-							// AT&T.
-							r = saver;
-							char v = e.charValue();
-							buf.setCharAt(r++, v);
-						}
-						i = j;
-						// this handles things like &lt&gt
-						if (ch != '&')
-							i++; // if not '&' then discard char
-						break;
-					}
-					esc += ch;
-				}
-				if (j == len) {
-					Character e = parseEscape(esc);
-					if (e != null) {
-						r = saver;
-						buf.setCharAt(r++, e.charValue());
-					}
-					break;
-				}
-			} else {
-				buf.setCharAt(r++, ch);
-				i++;
-			}
-		}
-		buf.setLength(r);
-	}
-
 	private int m_ttype;
 	private StringBuffer m_buf = new StringBuffer(128);
 	private StringBuffer m_whitespace = new StringBuffer();
@@ -559,8 +487,6 @@ public class HtmlStreamTokenizer {
 	private static byte m_ctype[] = new byte[CTYPE_LEN];
 	private static final byte CT_WHITESPACE = 1;
 
-	private static Escapes escapes = new Escapes();
-
 	private boolean m_unescape = false;
 	private boolean m_getEntities = false; // return TT_ENTITYREFERENCE
 
@@ -595,30 +521,6 @@ public class HtmlStreamTokenizer {
 
 	public void setUnescaped(boolean unescape) {
 		m_unescape = unescape;
-	}
-
-	private static Character parseEscape(String s) {
-		int len = s.length();
-		if (len == 0)
-			return null;
-		Character ch = null;
-
-		if (s.charAt(0) == '#') {
-			if (len <= 1)
-				return null;
-
-			int code = 0;
-			for (int i = 1; i < len; i++) {
-				if (!Character.isDigit(s.charAt(i)))
-					return null;
-				code = (code * 10) + Character.digit(s.charAt(i), 10);
-			}
-			ch = new Character((char) code);
-		} else {
-			ch = escapes.get(s);
-		}
-
-		return ch;
 	}
 
 	private void parseParams(HtmlTag tag, String buf, int idx)
@@ -757,8 +659,9 @@ public class HtmlStreamTokenizer {
 
 			String value = buf.substring(begin, end);
 
-			if (m_unescape)
-				value = unescape(value);
+			if (m_unescape) {
+				value = Unescaper.unescape(value);
+			}
 
 			tag.setParam(name, value);
 			tag.setWhitespace(name, whitespaceBefore, whitespaceAfter);
