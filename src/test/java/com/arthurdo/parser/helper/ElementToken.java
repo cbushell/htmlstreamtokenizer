@@ -6,42 +6,44 @@ import com.arthurdo.parser.HtmlTag;
 
 public class ElementToken extends Token {
 
-    private boolean _empty;
-    private String _value;
-    private boolean _invalid;
+	private String value;
 
-    public ElementToken(int type, HtmlStreamTokenizer tok) {
-        super(type);
-        try
-        {
-            HtmlTag tag = new HtmlTag();
-            tok.parseTag(tok.getStringValue(), tag);
-            if (tag.getTagType() == HtmlTag.T_UNKNOWN)
-                throw new HtmlException("this will get caught down below");
-            if (tag.isEmpty()) {
-                _empty = true;
-            }
-            _value = tag.toString();
-            _invalid = false;
-        }
-        catch (HtmlException e)
-        {
-            _invalid = true;
-            _value = "<" + tok.getStringValue() + ">";
-        }
-    }
+	private boolean empty;
+	private boolean invalid;
 
-    @Override
-    public String getValue() {
-        return _value;
-    }
+	public ElementToken(int type, HtmlStreamTokenizer tok) {
+		super(type);
+		try {
+			HtmlTag tag = new HtmlTag();
+			tok.parseTag(tok.getStringValue(), tag);
 
-    public boolean isEmpty() {
-        return _empty;
-    }
+			if (tag.getTagType() == HtmlTag.T_UNKNOWN) {
+				throw new HtmlException("this will get caught down below");
+			}
 
-    public boolean isInvalid() {
-        return _invalid;
-    }
+			if (tag.isEmpty()) {
+				empty = true;
+			}
+
+			value = tag.toString();
+			invalid = false;
+		} catch (HtmlException e) {
+			invalid = true;
+			value = "<" + tok.getStringValue() + ">";
+		}
+	}
+
+	@Override
+	public String getValue() {
+		return value;
+	}
+
+	public boolean isEmpty() {
+		return empty;
+	}
+
+	public boolean isInvalid() {
+		return invalid;
+	}
 
 }

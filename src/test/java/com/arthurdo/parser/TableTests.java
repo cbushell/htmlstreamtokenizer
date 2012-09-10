@@ -11,7 +11,6 @@ public class TableTests {
 
 	@Test
 	public void shouldReadSimpleTable() {
-
 		String row1 = "<tr>  <td>a</td> <td>b</td>   </tr>";
 		String row2 = "<tr>  <td>c</td> <td>d</td>   </tr>";
 		String htmlTable = makeHtmlTable(row1, row2);
@@ -27,7 +26,6 @@ public class TableTests {
 
 	@Test
 	public void shouldReadTableWithHeaderRow_ThoughItSeemsToSwallowTheHeaderCells() {
-
 		String row1 = "<th>  <td>a</td> <td>b</td>   </th>";
 		String row2 = "<tr>  <td>c</td> <td>d</td>   </tr>";
 		String htmlTable = makeHtmlTable(row1, row2);
@@ -41,7 +39,6 @@ public class TableTests {
 
 	@Test
 	public void shouldReadTableWithColSpan_ThoughReturnsEmptyStringOnNonExistentCell() {
-
 		String row1 = "<tr>   <td>a</td> <td>b</td>   </tr>";
 		String row2 = "<tr>   <td colspan=2>c</td>    </tr>";
 		String htmlTable = makeHtmlTable(row1, row2);
@@ -80,9 +77,11 @@ public class TableTests {
 	private String makeHtmlTable(String... rows) {
 		StringBuilder sb = new StringBuilder();
 		sb.append("<table>");
+
 		for (String row : rows) {
 			sb.append(row);
 		}
+
 		sb.append("</table>");
 		return sb.toString();
 	}
