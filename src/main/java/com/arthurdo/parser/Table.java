@@ -86,15 +86,18 @@ public class Table {
 	 *            input stream
 	 */
 	public void parseTable(Reader in) throws HtmlException, IOException {
-		HtmlStreamTokenizer tok = new HtmlStreamTokenizer(in);
+		HtmlStreamTokenizer tokenizer = new HtmlStreamTokenizer(in);
 		HtmlTag tag = new HtmlTag();
 
-		while (tok.nextToken() != HtmlStreamTokenizer.TT_EOF) {
-			int ttype = tok.getTokenType();
-			if (ttype == HtmlStreamTokenizer.TT_TAG) {
-				tok.parseTag(tok.getStringValue(), tag);
-				if (tag.getTagType() == HtmlMapper.T_TABLE && !tag.isEndTag())
-					parseTable(tok, new HtmlTag(tag));
+		while (tokenizer.nextToken() != HtmlStreamTokenizer.TT_EOF) {
+			int tokenType = tokenizer.getTokenType();
+
+			if (tokenType == HtmlStreamTokenizer.TT_TAG) {
+				tokenizer.parseTag(tokenizer.getStringValue(), tag);
+
+				if (tag.getTagType() == HtmlMapper.T_TABLE && !tag.isEndTag()) {
+					parseTable(tokenizer, new HtmlTag(tag));
+				}
 			}
 		}
 	}
@@ -116,8 +119,9 @@ public class Table {
 					if (tagtype == HtmlMapper.T_TR && !isEndTag) {
 						m_rowTags.addElement(new HtmlTag(tag));
 						newRow();
-						if (!parseRow())
+						if (!parseRow()) {
 							break;
+						}
 					} else if (tagtype == HtmlMapper.T_TABLE && isEndTag) {
 						break;
 					} else {
@@ -155,8 +159,10 @@ public class Table {
 	 *         phantom row, i.e. a row that doesn't have any real cells.
 	 */
 	public HtmlTag getRowTag(int row) {
-		if (row < m_rowTags.size())
+		if (row < m_rowTags.size()) {
 			return (HtmlTag) m_rowTags.elementAt(row);
+		}
+
 		return null;
 	}
 
@@ -193,13 +199,17 @@ public class Table {
 		int sizey = rows.size();
 		for (int y = 0; y < sizey; y++) {
 			int col = 0;
+
 			Vector row = (Vector) rows.elementAt(y);
 			int sizex = row.size();
+
 			for (int x = 0; x < sizex; x++) {
 				TableCell cell = (TableCell) row.elementAt(x);
 				col += cell.getColSpan();
-				if (col > maxcol)
+
+				if (col > maxcol) {
 					maxcol = col;
+				}
 			}
 		}
 		if (maxcol == 0)
@@ -213,24 +223,32 @@ public class Table {
 			Vector row = (Vector) rows.elementAt(y);
 			int sizex = row.size();
 			for (int x = 0; x < sizex; x++) {
-				while (y < rownum[col])
+				while (y < rownum[col]) {
 					col++; // skip to a column that is not spanned in the
 							// current row
+				}
+
 				TableCell cell = (TableCell) row.elementAt(x);
 				int colspan = cell.getColSpan();
 				for (int i = 0; i < colspan; i++) {
 					int colnum = col + i;
 					rownum[colnum] += cell.getRowSpan();
-					if (rownum[colnum] > maxrow)
+
+					if (rownum[colnum] > maxrow) {
 						maxrow = rownum[colnum];
+					}
 				}
 				col += colspan;
 			}
 		}
-		if (maxrow == 0)
+
+		if (maxrow == 0) {
 			throw new HtmlException("zero rows");
-		for (int i = 0; i < maxcol; i++)
+		}
+
+		for (int i = 0; i < maxcol; i++) {
 			rownum[i] = 0;
+		}
 
 		TableCell elements[][] = new TableCell[maxrow][maxcol];
 		// for each row
@@ -240,9 +258,11 @@ public class Table {
 			int sizex = row.size();
 			// for each cell
 			for (int x = 0; x < sizex; x++) {
-				while (y < rownum[col])
+				while (y < rownum[col]) {
 					col++; // skip to a column that is not spanned in the
 							// current row
+				}
+
 				TableCell cell = (TableCell) row.elementAt(x);
 				int r = rownum[col];
 				int c = col;
@@ -254,10 +274,11 @@ public class Table {
 					int rowspan = cell.getRowSpan();
 					// for each row this cell occupies
 					for (int j = 0; j < rowspan; j++) {
-						if (i > 0 || j > 0)
+						if (i > 0 || j > 0) {
 							// create a pseudo cell
 							elements[rownum[colnum] + j][colnum] = new TableCell(
 									r, c);
+						}
 					}
 					// update current row number for this column
 					rownum[colnum] += rowspan;
@@ -285,8 +306,10 @@ public class Table {
 					boolean isEndTag = tag.isEndTag();
 
 					if (tagtype == HtmlMapper.T_TR) {
-						if (!isEndTag)
+						if (!isEndTag) {
 							pushBackToken();
+						}
+						
 						// row ended, continue with next row
 						continueParsing = true;
 						break;
@@ -397,8 +420,9 @@ public class Table {
 	}
 
 	private int nextToken() throws IOException {
-		if (m_pushback)
+		if (m_pushback){
 			m_pushback = false;
+		}
 		else {
 			m_tokenType = m_tok.nextToken();
 			m_stringValue = m_tok.getStringValue();
@@ -409,9 +433,10 @@ public class Table {
 	}
 
 	private void pushBackToken() throws IOException {
-		if (m_pushback)
+		if (m_pushback){
 			throw new IOException("only one token pushback supported");
-
+		}
+		
 		m_tokenType = m_tok.getTokenType();
 		m_stringValue = m_tok.getStringValue();
 		m_whiteSpace = m_tok.getWhiteSpace();
