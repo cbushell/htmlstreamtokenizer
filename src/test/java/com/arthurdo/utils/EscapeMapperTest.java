@@ -1,10 +1,10 @@
-package com.arthurdo.charutils;
+package com.arthurdo.utils;
 
 import junit.framework.Assert;
 
 import org.junit.Test;
 
-import com.arthurdo.charutils.EscapeMapper;
+import com.arthurdo.utils.EscapeMapper;
 
 public class EscapeMapperTest {
 

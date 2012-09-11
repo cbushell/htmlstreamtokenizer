@@ -7,12 +7,12 @@ import java.io.IOException;
 import java.io.Reader;
 import java.io.StringReader;
 
-import com.arthurdo.charutils.CharUtils;
-import com.arthurdo.charutils.EscapeMapper;
-import com.arthurdo.charutils.Unescaper;
 import com.arthurdo.parser.HtmlException;
 import com.arthurdo.parser.HtmlStreamTokenizer;
 import com.arthurdo.parser.HtmlTag;
+import com.arthurdo.utils.CharUtils;
+import com.arthurdo.utils.EscapeMapper;
+import com.arthurdo.utils.Unescaper;
 
 public class ParserTest {
 

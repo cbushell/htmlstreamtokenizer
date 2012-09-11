@@ -25,9 +25,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 
-import com.arthurdo.charutils.CharUtils;
-import com.arthurdo.charutils.EscapeMapper;
-import com.arthurdo.charutils.Unescaper;
+import com.arthurdo.utils.CharUtils;
+import com.arthurdo.utils.EscapeMapper;
+import com.arthurdo.utils.Unescaper;
 
 import static com.arthurdo.parser.Chars.*;
 

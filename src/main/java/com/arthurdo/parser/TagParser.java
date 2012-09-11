@@ -3,7 +3,7 @@ package com.arthurdo.parser;
 import static com.arthurdo.parser.Chars.C_EMPTY;
 import static com.arthurdo.parser.Chars.C_ENDTAG;
 
-import com.arthurdo.charutils.CharUtils;
+import com.arthurdo.utils.CharUtils;
 
 public class TagParser {
 
