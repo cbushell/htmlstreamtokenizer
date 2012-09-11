@@ -1,6 +1,7 @@
 package com.arthurdo.parser;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
 
@@ -22,55 +23,61 @@ public class TagParserTest {
 	@Test(expected = HtmlException.class)
 	public void itShouldThrowAnExceptionWhenBufferIsEmpty()
 			throws HtmlException, IOException {
-		StringBuffer sbuf = new StringBuffer();
-
-		tagParser.parseTag(sbuf, new HtmlTag());
+		parse("");
 	}
 
 	@Test(expected = HtmlException.class)
 	public void itShouldThrowAnExceptionWhenBufferContainsOnlyWhitespace()
 			throws HtmlException, IOException {
-		StringBuffer sbuf = new StringBuffer("    ");
-
-		tagParser.parseTag(sbuf, new HtmlTag());
+		parse("    ");
 	}
 
 	@Test
 	public void itShouldNotThrowAnExceptionWhenBufferIsNotEmpty()
 			throws HtmlException, IOException {
-		StringBuffer sbuf = new StringBuffer("Foo");
-
-		tagParser.parseTag(sbuf, new HtmlTag());
+		parse("Foo");
 	}
 
 	@Test
 	public void itShouldSetTheTagsTokenWhenBufferIsNotEmpty()
 			throws HtmlException, IOException {
-		StringBuffer sbuf = new StringBuffer("Foo");
-
-		HtmlTag tag = new HtmlTag();
-		tagParser.parseTag(sbuf, tag);
-		
+		HtmlTag tag = parse("Foo");
 		assertEquals("Foo", tag.getTagString());
 	}
 
 	@Test(expected = HtmlException.class)
 	public void itShouldThrowAnExceptionWhenBufferContainsOnlyBackslash()
 			throws HtmlException, IOException {
-		StringBuffer sbuf = new StringBuffer("/");
-
-		tagParser.parseTag(sbuf, new HtmlTag());
+		parse("/");
 	}
-	
+
 	@Test
 	public void itShouldIndicateTheTagIsAnHtmlEndTagWhenBufferContainsSomethingAfterBackslash()
 			throws HtmlException, IOException {
-		StringBuffer sbuf = new StringBuffer("/x");
-		
-		HtmlTag tag = new HtmlTag();
-		tagParser.parseTag(sbuf, tag);
-		
+		HtmlTag tag = parse("/x");
 		assertTrue(tag.isEndTag());
+	}
+
+	@Test
+	public void itShouldParseEmptyTags() throws HtmlException, IOException {
+		HtmlTag tag = parse("<img></img>");
+		assertEquals("<img><", tag.getTagString());
+	}
+
+	@Test
+	public void itShouldParseSelfClosingTags() throws HtmlException,
+			IOException {
+		HtmlTag tag = parse("<img/>");
+		assertEquals("<img", tag.getTagString());
+	}
+
+	private HtmlTag parse(String string) throws HtmlException {
+		StringBuffer stringBuffer = new StringBuffer(string);
+
+		HtmlTag htmlTag = new HtmlTag();
+		tagParser.parseTag(stringBuffer, htmlTag);
+
+		return htmlTag;
 	}
 
 }
