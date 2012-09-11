@@ -1,5 +1,7 @@
 package com.arthurdo.parser;
 
+import static org.junit.Assert.*;
+
 import java.io.IOException;
 
 import org.junit.Before;
@@ -39,6 +41,36 @@ public class TagParserTest {
 		StringBuffer sbuf = new StringBuffer("Foo");
 
 		tagParser.parseTag(sbuf, new HtmlTag());
+	}
+
+	@Test
+	public void itShouldSetTheTagsTokenWhenBufferIsNotEmpty()
+			throws HtmlException, IOException {
+		StringBuffer sbuf = new StringBuffer("Foo");
+
+		HtmlTag tag = new HtmlTag();
+		tagParser.parseTag(sbuf, tag);
+		
+		assertEquals("Foo", tag.getTagString());
+	}
+
+	@Test(expected = HtmlException.class)
+	public void itShouldThrowAnExceptionWhenBufferContainsOnlyBackslash()
+			throws HtmlException, IOException {
+		StringBuffer sbuf = new StringBuffer("/");
+
+		tagParser.parseTag(sbuf, new HtmlTag());
+	}
+	
+	@Test
+	public void itShouldIndicateTheTagIsAnHtmlEndTagWhenBufferContainsSomethingAfterBackslash()
+			throws HtmlException, IOException {
+		StringBuffer sbuf = new StringBuffer("/x");
+		
+		HtmlTag tag = new HtmlTag();
+		tagParser.parseTag(sbuf, tag);
+		
+		assertTrue(tag.isEndTag());
 	}
 
 }
