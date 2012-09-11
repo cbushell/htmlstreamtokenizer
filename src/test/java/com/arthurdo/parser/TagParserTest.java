@@ -25,6 +25,14 @@ public class TagParserTest {
 		tagParser.parseTag(sbuf, new HtmlTag());
 	}
 
+	@Test(expected = HtmlException.class)
+	public void itShouldThrowAnExceptionWhenBufferContainsOnlyWhitespace()
+			throws HtmlException, IOException {
+		StringBuffer sbuf = new StringBuffer("    ");
+
+		tagParser.parseTag(sbuf, new HtmlTag());
+	}
+
 	@Test
 	public void itShouldNotThrowAnExceptionWhenBufferIsNotEmpty()
 			throws HtmlException, IOException {
