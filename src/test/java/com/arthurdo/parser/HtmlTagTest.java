@@ -19,7 +19,7 @@ public class HtmlTagTest {
     @Test
     public void shouldFindH6() throws HtmlException {
         tag.setTag("h6");
-        assertEquals(HtmlTag.T_H6, tag.getTagType());
+        assertEquals(HtmlMapper.T_H6, tag.getTagType());
     }
 
     @Test
@@ -31,6 +31,6 @@ public class HtmlTagTest {
     @Test
     public void shouldFindBody() throws HtmlException {
     	tag.setTag("Body");
-        assertEquals(HtmlTag.T_BODY, tag.getTagType());    	
+        assertEquals(HtmlMapper.T_BODY, tag.getTagType());    	
     }
 }
