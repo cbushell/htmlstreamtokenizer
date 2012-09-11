@@ -63,6 +63,10 @@ import java.util.Vector;
  * @see com.arthurdo.parser.TableCell
  */
 public class Table {
+
+	public static final String P_ROWSPAN = new String("rowspan");
+	public static final String P_COLSPAN = new String("colspan");
+
 	public Table() {
 	}
 
@@ -367,14 +371,14 @@ public class Table {
 	private void beginCell(HtmlTag tag) {
 		int rowspan = 1;
 		try {
-			rowspan = tag.getIntParam(HtmlTag.P_ROWSPAN);
+			rowspan = tag.getIntParam(P_ROWSPAN);
 			if (rowspan <= 0)
 				rowspan = 1;
 		} catch (NumberFormatException e) {
 		}
 		int colspan = 1;
 		try {
-			colspan = tag.getIntParam(HtmlTag.P_COLSPAN);
+			colspan = tag.getIntParam(P_COLSPAN);
 			if (colspan <= 0)
 				colspan = 1;
 		} catch (NumberFormatException e) {
