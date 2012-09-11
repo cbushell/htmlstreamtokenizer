@@ -19,6 +19,9 @@
 
 package com.arthurdo.parser;
 
+import static com.arthurdo.parser.Chars.C_DOUBLEQUOTE;
+import static com.arthurdo.parser.Chars.C_SINGLEQUOTE;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -28,8 +31,6 @@ import java.io.Reader;
 import com.arthurdo.utils.CharUtils;
 import com.arthurdo.utils.EscapeMapper;
 import com.arthurdo.utils.Unescaper;
-
-import static com.arthurdo.parser.Chars.*;
 
 /**
  * <p>
@@ -107,15 +108,9 @@ public class HtmlStreamTokenizer {
 	 */
 	public static final int TT_ENTITYREFERENCE = -6;
 
-
-	private CharUtils charUtils = new CharUtils();
-
-	private Unescaper unescaper = new Unescaper(charUtils, new EscapeMapper());
-
-	private TagParser tagParser = new TagParser(this);
-	
-	private ParamParser paramParser = new ParamParser(charUtils, unescaper);
-	
+	private CharUtils charUtils;
+	private Unescaper unescaper;
+	private ParamParser paramParser;
 
 	/**
 	 * @deprecated use HtmlStreamTokenizer(Reader) instead. This version of the
@@ -135,6 +130,10 @@ public class HtmlStreamTokenizer {
 	public HtmlStreamTokenizer(Reader in) {
 		m_in = in;
 		m_state = STATE_TEXT;
+
+		charUtils = new CharUtils();
+		unescaper = new Unescaper(charUtils, new EscapeMapper());
+		paramParser = new ParamParser(charUtils, unescaper);
 	}
 
 	/**
@@ -424,7 +423,10 @@ public class HtmlStreamTokenizer {
 	}
 
 	public void parseTag(StringBuffer sbuf, HtmlTag tag) throws HtmlException {
+		TagParser tagParser = new TagParser(charUtils);
 		tagParser.parseTag(sbuf, tag);
+		
+		parseParams(tag, tagParser.getBuffer(), tagParser.getIndex());
 	}
 
 	private int m_ttype;
@@ -451,7 +453,8 @@ public class HtmlStreamTokenizer {
 
 	private int m_state = STATE_TEXT;
 
-	private Reader m_in; // input reader appears to be an order of magnitude slower than inputstream!
+	private Reader m_in; // input reader appears to be an order of magnitude
+							// slower than inputstream!
 
 	private int m_tagquote;
 
@@ -466,8 +469,7 @@ public class HtmlStreamTokenizer {
 		m_unescape = unescape;
 	}
 
-	void parseParams(HtmlTag tag, String buf, int idx)
-			throws HtmlException {
+	void parseParams(HtmlTag tag, String buf, int idx) throws HtmlException {
 		paramParser.parseParams(tag, buf, idx, m_unescape);
 	}
 }

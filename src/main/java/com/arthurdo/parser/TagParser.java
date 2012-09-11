@@ -8,15 +8,13 @@ import com.arthurdo.utils.CharUtils;
 public class TagParser {
 
 	private CharUtils charUtils;
-	
-	private HtmlStreamTokenizer htmlStreamTokenizer;
-	
+	private int idx;
+	private String buf;
 
-	public TagParser(HtmlStreamTokenizer htmlStreamTokenizer){
-		charUtils = new CharUtils();
-		this.htmlStreamTokenizer = htmlStreamTokenizer;
+	public TagParser(CharUtils charUtils) {
+		this.charUtils = charUtils;
 	}
-	
+
 	public void parseTag(StringBuffer sbuf, HtmlTag tag) throws HtmlException {
 		tag.reset();
 
@@ -51,10 +49,17 @@ public class TagParser {
 		}
 
 		String token = buf.substring(begin, idx);
-
 		tag.setTag(token);
-
-		htmlStreamTokenizer.parseParams(tag, buf, idx);
+		
+		this.buf = buf;
+		this.idx = idx;
 	}
-	
+
+	public int getIndex() {
+		return idx;
+	}
+
+	public String getBuffer() {
+		return buf;
+	}
 }
