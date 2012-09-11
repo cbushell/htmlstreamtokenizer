@@ -24,7 +24,6 @@ public class TagParser {
 
 		int indexOfFirstNonWhitespaceChar = getIndexOfFirstNonWhitespaceChar(string);
 
-
 		if (string.charAt(indexOfFirstNonWhitespaceChar) == C_ENDTAG) {
 			tag.setEndTag(true);
 			indexOfFirstNonWhitespaceChar++;
@@ -44,31 +43,30 @@ public class TagParser {
 			indexOfFirstNonWhitespaceChar++;
 		}
 
-		String token = string.substring(begin,
-				indexOfFirstNonWhitespaceChar);
+		String token = string.substring(begin, indexOfFirstNonWhitespaceChar);
 		tag.setTag(token);
 
 		this.buf = string;
 		this.idx = indexOfFirstNonWhitespaceChar;
 	}
 
-	private int getIndexOfFirstNonWhitespaceChar(String string) throws HtmlException {
-		int stringLength = string.length();
-		
-		int indexOfFirstNonWhitespaceCharacter = 0;
+	private int getIndexOfFirstNonWhitespaceChar(String string)
+			throws HtmlException {
+		int index = 0;
 
-		while (indexOfFirstNonWhitespaceCharacter < stringLength
-				&& charUtils.isSpace(string
-						.charAt(indexOfFirstNonWhitespaceCharacter))) {
-			indexOfFirstNonWhitespaceCharacter++;
+		for (char c : string.toCharArray()) {
+			if (charUtils.isSpace(c)) {
+				index++;
+			} else {
+				break;
+			}
 		}
-		
-		if (indexOfFirstNonWhitespaceCharacter == stringLength) {
+
+		if (index == string.length()) {
 			throw new HtmlException("parse empty tag");
 		}
 
-		
-		return indexOfFirstNonWhitespaceCharacter;
+		return index;
 	}
 
 	public int getIndex() {
