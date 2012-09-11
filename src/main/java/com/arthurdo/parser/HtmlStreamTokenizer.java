@@ -29,6 +29,8 @@ import com.arthurdo.charutils.CharUtils;
 import com.arthurdo.charutils.EscapeMapper;
 import com.arthurdo.charutils.Unescaper;
 
+import static com.arthurdo.parser.Chars.*;
+
 /**
  * <p>
  * HtmlStreamTokenizer is an HTML parser that is similar to the StreamTokenizer
@@ -105,12 +107,13 @@ public class HtmlStreamTokenizer {
 	 */
 	public static final int TT_ENTITYREFERENCE = -6;
 
-		
+
+	private TagParser tagParser = new TagParser(this);
+
 	private CharUtils charUtils = new CharUtils();
 
 	private Unescaper unescaper = new Unescaper(charUtils, new EscapeMapper());
-	
-	
+
 	/**
 	 * @deprecated use HtmlStreamTokenizer(Reader) instead. This version of the
 	 *             constructor can lead to 10x slower code because of the
@@ -219,8 +222,9 @@ public class HtmlStreamTokenizer {
 
 			if (m_pushback != 0) {
 				c = m_pushback;
-				if (c == '\n')
+				if (c == '\n') {
 					m_lineno--; // don't count newline twice
+				}
 				m_pushback = 0;
 			} else if (m_cdata < -1)
 				c = m_cdata_end[m_cdata++ + m_cdata_end.length + 1];
@@ -241,8 +245,9 @@ public class HtmlStreamTokenizer {
 					return m_ttype = TT_EOF;
 			}
 
-			if (c == '\n')
+			if (c == '\n') {
 				m_lineno++;
+			}
 
 			switch (m_state) {
 			case STATE_TEXT: {
@@ -256,10 +261,11 @@ public class HtmlStreamTokenizer {
 																					// strings
 					{
 						if (++m_cdata == m_cdata_end.length) {
-							if (m_cdata_pushback)
+							if (m_cdata_pushback) {
 								m_cdata = -m_cdata_end.length - 1;
-							else
+							} else {
 								m_cdata = -1;
+							}
 							m_isCDTATA = true;
 							return m_ttype = TT_TEXT;
 						}
@@ -276,22 +282,26 @@ public class HtmlStreamTokenizer {
 					int peek = inCDATApushback ? m_cdata_end[m_cdata++
 							+ m_cdata_end.length + 1] : m_in.read();
 
-					if (peek == '!')
+					if (peek == '!') {
 						m_state = STATE_BANGTAG;
-					else if (peek == '<') {
+					} else if (peek == '<') {
 						// handle <<, some people use it in <pre>
 						m_buf.append("<<");
 						break;
 					} else {
 						m_pushback = peek;
-						if (inCDATApushback)
+						if (inCDATApushback) {
 							--m_cdata;
+						}
+
 						m_state = STATE_TAG;
 					}
 
 					if (m_buf.length() > 0) {
-						if (m_unescape && hasAmp)
+						if (m_unescape && hasAmp) {
 							unescaper.unescape(m_buf);
+						}
+
 						return m_ttype = TT_TEXT;
 					}
 				}
@@ -305,8 +315,9 @@ public class HtmlStreamTokenizer {
 						if (m_getEntities) {
 							m_state = STATE_ENTITYREF;
 							return m_ttype = TT_TEXT;
-						} else
+						} else {
 							hasAmp = true;
+						}
 					}
 					m_buf.append((char) c);
 				}
@@ -391,9 +402,11 @@ public class HtmlStreamTokenizer {
 			}
 				break;
 			case STATE_ENTITYREF: {
-				if (c == ';' || c == '<' || (charUtils.isPunct((char) c) && c != '#')
-						|| charUtils.isSpace(c)) // accept any of these as terminating the
-										// entity
+				if (c == ';' || c == '<'
+						|| (charUtils.isPunct((char) c) && c != '#')
+						|| charUtils.isSpace(c)) // accept any of these as
+													// terminating the
+				// entity
 				{
 					if (c != ';')
 						m_pushback = c;
@@ -407,56 +420,8 @@ public class HtmlStreamTokenizer {
 		}
 	}
 
-	/**
-	 * The reason this function takes an HtmlTag argument rather than returning
-	 * a newly created HtmlTag object is so that you can create your own tag
-	 * class derived from HtmlTag if desired.
-	 * 
-	 * @param sbuf
-	 *            text buffer to parse
-	 * @param tag
-	 *            parse the text buffer and store the result in this object
-	 * @exception HtmlException
-	 *                if malformed tag.
-	 */
 	public void parseTag(StringBuffer sbuf, HtmlTag tag) throws HtmlException {
-		tag.reset();
-
-		String buf = sbuf.toString();
-		int len = buf.length();
-		int idx = 0;
-		int begin = 0;
-
-		// parse tag
-		while (idx < len && charUtils.isSpace(buf.charAt(idx))) {
-			idx++;
-		}
-
-		if (idx == len) {
-			throw new HtmlException("parse empty tag");
-		}
-
-		if (buf.charAt(idx) == C_ENDTAG) {
-			tag.setEndTag(true);
-			idx++;
-		}
-
-		if (idx == len) {
-			throw new HtmlException("parse empty tag");
-		}
-
-		begin = idx;
-		// deal with empty tags like <img/>
-		while (idx < len && !charUtils.isSpace(buf.charAt(idx))
-				&& buf.charAt(idx) != C_EMPTY) {
-			idx++;
-		}
-
-		String token = buf.substring(begin, idx);
-
-		tag.setTag(token);
-
-		parseParams(tag, buf, idx);
+		tagParser.parseTag(sbuf, tag);
 	}
 
 	private int m_ttype;
@@ -487,10 +452,6 @@ public class HtmlStreamTokenizer {
 	private Reader m_in; // input reader appears to be an order of magnitude
 							// slower than inputstream!
 
-	/* package */static final char C_ENDTAG = '/';
-	private static final char C_EMPTY = '/'; // XML char for empty tags
-	private static final char C_SINGLEQUOTE = '\'';
-	private static final char C_DOUBLEQUOTE = '"';
 	private int m_tagquote;
 
 	private boolean m_unescape = false;
@@ -504,7 +465,7 @@ public class HtmlStreamTokenizer {
 		m_unescape = unescape;
 	}
 
-	private void parseParams(HtmlTag tag, String buf, int idx)
+	void parseParams(HtmlTag tag, String buf, int idx)
 			throws HtmlException {
 		int len = buf.length();
 		int begin = 0;
@@ -566,8 +527,10 @@ public class HtmlStreamTokenizer {
 			String name = buf.substring(begin, idx);
 
 			begin = idx;
-			if (idx < len && charUtils.isSpace(buf.charAt(idx)))// skip whitespace after
-														// attribute name
+			if (idx < len && charUtils.isSpace(buf.charAt(idx)))// skip
+																// whitespace
+																// after
+			// attribute name
 			{
 				while (idx < len && charUtils.isSpace(buf.charAt(idx)))
 					idx++;

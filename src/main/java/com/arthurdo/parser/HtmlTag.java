@@ -19,6 +19,8 @@
 
 package com.arthurdo.parser;
 
+import static com.arthurdo.parser.Chars.C_ENDTAG;
+
 import java.util.Enumeration;
 import java.util.Vector;
 
@@ -222,7 +224,7 @@ public class HtmlTag {
 
 		tag.append('<');
 		if (isEndTag())
-			tag.append(HtmlStreamTokenizer.C_ENDTAG);
+			tag.append(C_ENDTAG);
 		tag.append(getTagString());
 
 		final int size = m_names.size();
