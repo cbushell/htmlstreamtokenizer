@@ -43,6 +43,7 @@ public class TagParserTest {
 			throws HtmlException, IOException {
 		HtmlTag tag = parse("Foo");
 		assertEquals("Foo", tag.getTagString());
+		assertEquals(3, tagParser.getIndex());
 	}
 
 	@Test(expected = HtmlException.class)
@@ -56,12 +57,14 @@ public class TagParserTest {
 			throws HtmlException, IOException {
 		HtmlTag tag = parse("/x");
 		assertTrue(tag.isEndTag());
+		assertEquals(2, tagParser.getIndex());
 	}
 
 	@Test
 	public void itShouldParseEmptyTags() throws HtmlException, IOException {
 		HtmlTag tag = parse("<img></img>");
 		assertEquals("<img><", tag.getTagString());
+		assertEquals(6, tagParser.getIndex());
 	}
 
 	@Test
@@ -69,6 +72,7 @@ public class TagParserTest {
 			IOException {
 		HtmlTag tag = parse("<img/>");
 		assertEquals("<img", tag.getTagString());
+		assertEquals(4, tagParser.getIndex());
 	}
 
 	private HtmlTag parse(String string) throws HtmlException {
