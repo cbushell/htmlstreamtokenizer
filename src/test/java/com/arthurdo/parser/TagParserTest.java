@@ -1,7 +1,6 @@
 package com.arthurdo.parser;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
 
@@ -23,63 +22,55 @@ public class TagParserTest {
 	@Test(expected = HtmlException.class)
 	public void itShouldThrowAnExceptionWhenBufferIsEmpty()
 			throws HtmlException, IOException {
-		parse("");
+		parseTag("");
 	}
 
 	@Test(expected = HtmlException.class)
 	public void itShouldThrowAnExceptionWhenBufferContainsOnlyWhitespace()
 			throws HtmlException, IOException {
-		parse("    ");
+		parseTag("    ");
 	}
 
 	@Test
 	public void itShouldNotThrowAnExceptionWhenBufferIsNotEmpty()
 			throws HtmlException, IOException {
-		parse("Foo");
+		parseTag("Foo");
 	}
 
 	@Test
 	public void itShouldSetTheTagsTokenWhenBufferIsNotEmpty()
 			throws HtmlException, IOException {
-		HtmlTag tag = parse("Foo");
-		assertEquals("Foo", tag.getTagString());
-		assertEquals(3, tagParser.getIndex());
-		assertEquals("Foo", tagParser.getBuffer());
+		HtmlTag tag = parseTag("Foo");
+		verify(tag, "Foo", 3, "Foo", false);
 	}
 
 	@Test(expected = HtmlException.class)
 	public void itShouldThrowAnExceptionWhenBufferContainsOnlyBackslash()
 			throws HtmlException, IOException {
-		parse("/");
+		parseTag("/");
 	}
 
 	@Test
 	public void itShouldIndicateTheTagIsAnHtmlEndTagWhenBufferContainsSomethingAfterBackslash()
 			throws HtmlException, IOException {
-		HtmlTag tag = parse("/x");
-		assertTrue(tag.isEndTag());
-		assertEquals(2, tagParser.getIndex());
-		assertEquals("/x", tagParser.getBuffer());
+		HtmlTag tag = parseTag("/x");
+		verify(tag, "x", 2, "/x", true);
 	}
 
 	@Test
 	public void itShouldParseEmptyTags() throws HtmlException, IOException {
-		HtmlTag tag = parse("<img></img>");
-		assertEquals("<img><", tag.getTagString());
-		assertEquals(6, tagParser.getIndex());
-		assertEquals("<img></img>", tagParser.getBuffer());
+		HtmlTag tag = parseTag("<img></img>");
+		verify(tag, "<img><", 6, "<img></img>", false);
 	}
 
 	@Test
 	public void itShouldParseSelfClosingTags() throws HtmlException,
 			IOException {
-		HtmlTag tag = parse("<img/>");
-		assertEquals("<img", tag.getTagString());
-		assertEquals(4, tagParser.getIndex());
-		assertEquals("<img/>", tagParser.getBuffer());
+		HtmlTag tag = parseTag("<img/>");
+		verify(tag, "<img", 4, "<img/>", false);
 	}
 
-	private HtmlTag parse(String string) throws HtmlException {
+	private HtmlTag parseTag(String string) throws HtmlException {
 		StringBuffer stringBuffer = new StringBuffer(string);
 
 		HtmlTag htmlTag = new HtmlTag();
@@ -88,4 +79,11 @@ public class TagParserTest {
 		return htmlTag;
 	}
 
+	public void verify(HtmlTag tag, String tagString, int index, String buffer,
+			boolean isEndTag) {
+		assertEquals(index, tagParser.getIndex());
+		assertEquals(buffer, tagParser.getBuffer());
+		assertEquals(isEndTag, tag.isEndTag());
+		assertEquals(tagString, tag.getTagString());
+	}
 }

@@ -28,27 +28,32 @@ public class TagParser {
 			indexOfFirstNonWhitespaceChar++;
 		}
 
-		int stringLength = string.length();
-
-		if (indexOfFirstNonWhitespaceChar == stringLength) {
+		if (indexOfFirstNonWhitespaceChar == string.length()) {
 			throw new HtmlException("parse empty tag");
 		}
 
-		int begin = indexOfFirstNonWhitespaceChar;
+		int endIndex = getIndexOfCharacterTagOfToken(string,
+				indexOfFirstNonWhitespaceChar);
 
-		// deal with empty tags like <img/>
-		while (indexOfFirstNonWhitespaceChar < stringLength
-				&& !charUtils.isSpace(string
-						.charAt(indexOfFirstNonWhitespaceChar))
-				&& string.charAt(indexOfFirstNonWhitespaceChar) != C_EMPTY) {
-			indexOfFirstNonWhitespaceChar++;
-		}
-
-		String token = string.substring(begin, indexOfFirstNonWhitespaceChar);
+		String token = string
+				.substring(indexOfFirstNonWhitespaceChar, endIndex);
 		tag.setTag(token);
 
 		this.buf = string;
-		this.idx = indexOfFirstNonWhitespaceChar;
+		this.idx = endIndex;
+	}
+
+	private int getIndexOfCharacterTagOfToken(String string,
+			int indexOfFirstNonWhitespaceChar) {
+		int stringLength = string.length();
+		int index = indexOfFirstNonWhitespaceChar;
+
+		while (index < stringLength && !charUtils.isSpace(string.charAt(index))
+				&& string.charAt(index) != C_EMPTY) {
+			index++;
+		}
+
+		return index;
 	}
 
 	private boolean isHtmlEndTag(String string,
