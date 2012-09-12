@@ -44,6 +44,7 @@ public class TagParserTest {
 		HtmlTag tag = parse("Foo");
 		assertEquals("Foo", tag.getTagString());
 		assertEquals(3, tagParser.getIndex());
+		assertEquals("Foo", tagParser.getBuffer());
 	}
 
 	@Test(expected = HtmlException.class)
@@ -58,6 +59,7 @@ public class TagParserTest {
 		HtmlTag tag = parse("/x");
 		assertTrue(tag.isEndTag());
 		assertEquals(2, tagParser.getIndex());
+		assertEquals("/x", tagParser.getBuffer());
 	}
 
 	@Test
@@ -65,6 +67,7 @@ public class TagParserTest {
 		HtmlTag tag = parse("<img></img>");
 		assertEquals("<img><", tag.getTagString());
 		assertEquals(6, tagParser.getIndex());
+		assertEquals("<img></img>", tagParser.getBuffer());
 	}
 
 	@Test
@@ -73,6 +76,7 @@ public class TagParserTest {
 		HtmlTag tag = parse("<img/>");
 		assertEquals("<img", tag.getTagString());
 		assertEquals(4, tagParser.getIndex());
+		assertEquals("<img/>", tagParser.getBuffer());
 	}
 
 	private HtmlTag parse(String string) throws HtmlException {
