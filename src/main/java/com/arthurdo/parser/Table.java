@@ -65,21 +65,12 @@ public class Table
 	{
 	}
 
-	/**
-	 * @deprecated	use parseTable(Reader) instead.
-	 *				This version of the constructor can lead to 10x slower code
-	 *				because of the InputStreamReader wrapper.
-	 * @param	data  input stream
-	 */
 	public void parseTable(InputStream in)
 		throws HtmlException, IOException
 	{
 		parseTable(new InputStreamReader(in));
 	}
 
-	/**
-	 * @param	data  input stream
-	 */
 	public void parseTable(Reader in)
 		throws HtmlException, IOException
 	{
@@ -92,7 +83,7 @@ public class Table
 			if (ttype == HtmlStreamTokenizer.TT_TAG)
 			{
 				tok.parseTag(tok.getStringValue(), tag);
-				if (tag.getTagType() == HtmlTag.T_TABLE && !tag.isEndTag())
+				if (tag.getTagType() == Tags.T_TABLE && !tag.isEndTag())
 					parseTable(tok, new HtmlTag(tag));
 			}
 		}
@@ -116,14 +107,14 @@ public class Table
 					int tagtype = tag.getTagType();
 					boolean isEndTag = tag.isEndTag();
 
-					if (tagtype == HtmlTag.T_TR && !isEndTag)
+					if (tagtype == Tags.T_TR && !isEndTag)
 					{
 						m_rowTags.addElement(new HtmlTag(tag));
 						newRow();
 						if (!parseRow())
 							break;
 					}
-					else if (tagtype == HtmlTag.T_TABLE && isEndTag)
+					else if (tagtype == Tags.T_TABLE && isEndTag)
 					{
 						break;
 					}
@@ -309,7 +300,7 @@ public class Table
 					int tagtype = tag.getTagType();
 					boolean isEndTag = tag.isEndTag();
 
-					if (tagtype == HtmlTag.T_TR)
+					if (tagtype == Tags.T_TR)
 					{
 						if (!isEndTag)
 							pushBackToken();
@@ -317,7 +308,7 @@ public class Table
 						continueParsing = true;
 						break;
 					}
-					else if (tagtype == HtmlTag.T_TD || tagtype == HtmlTag.T_TH)
+					else if (tagtype == Tags.T_TD || tagtype == Tags.T_TH)
 					{
 						if (!isEndTag)
 						{
@@ -359,7 +350,7 @@ public class Table
 					int tagtype = tag.getTagType();
 					boolean isEndTag = tag.isEndTag();
 
-					if (tagtype == HtmlTag.T_TR)
+					if (tagtype == Tags.T_TR)
 					{
 						if (!isEndTag)
 							pushBackToken();
@@ -367,7 +358,7 @@ public class Table
 						continueParsing = true;
 						break;
 					}
-					else if (tagtype == HtmlTag.T_TD || tagtype == HtmlTag.T_TH)
+					else if (tagtype == Tags.T_TD || tagtype == Tags.T_TH)
 					{
 						if (!isEndTag)
 							pushBackToken();
@@ -375,7 +366,7 @@ public class Table
 						continueParsing = true;
 						break;
 					}
-					else if (tagtype == HtmlTag.T_TABLE)
+					else if (tagtype == Tags.T_TABLE)
 					{
 						if (isEndTag)
 						{
@@ -423,7 +414,7 @@ public class Table
 		int rowspan = 1;
 		try
 		{
-			rowspan = tag.getIntParam(HtmlTag.P_ROWSPAN);
+			rowspan = tag.getIntParam(Tags.P_ROWSPAN);
 			if (rowspan <= 0)
 				rowspan = 1;
 		}
@@ -433,7 +424,7 @@ public class Table
 		int colspan = 1;
 		try
 		{
-			colspan = tag.getIntParam(HtmlTag.P_COLSPAN);
+			colspan = tag.getIntParam(Tags.P_COLSPAN);
 			if (colspan <= 0)
 				colspan = 1;
 		}

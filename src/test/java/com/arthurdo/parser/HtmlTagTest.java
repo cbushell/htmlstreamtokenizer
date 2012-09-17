@@ -19,12 +19,12 @@ public class HtmlTagTest {
     @Test
     public void shouldFindH6() throws HtmlException {
         _tag.setTag("h6");
-        assertEquals(HtmlTag.T_H6, _tag.getTagType());
+        assertEquals(Tags.T_H6, _tag.getTagType());
     }
 
     @Test
     public void shouldNotFindH7() throws HtmlException {
         _tag.setTag("h7");
-        assertEquals(HtmlTag.T_UNKNOWN, _tag.getTagType());
+        assertEquals(Tags.T_UNKNOWN, _tag.getTagType());
     }
 }
