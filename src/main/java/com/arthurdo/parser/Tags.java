@@ -5,112 +5,112 @@ import java.util.Hashtable;
 public class Tags {
 
     public enum tags {
-        T_UNKNOWN,
-        T_A,
-        T_ABBREV,
-        T_ACRONYM,
-        T_ADDRESS,
-        T_APPLET,
-        T_AREA,
-        T_AU,
-        T_B,
-        T_BANNER,
-        T_BASE,
-        T_BASEFONT,
-        T_BGSOUND,
-        T_BIG,
-        T_BLINK,
-        T_BLOCKQUOTE,
-        T_BODY,
-        T_BR,
-        T_CAPTION,
-        T_CENTER,
-        T_CITE,
-        T_CODE,
-        T_COL,
-        T_COLGROUP,
-        T_CREDIT,
-        T_DD,
-        T_DEL,
-        T_DFN,
-        T_DIR,
-        T_DIV,
-        T_DL,
-        T_DT,
-        T_EM,
-        T_EMBED,
-        T_FIG,
-        T_FN,
-        T_FONT,
-        T_FORM,
-        T_FRAME,
-        T_FRAMESET,
-        T_H1,
-        T_H2,
-        T_H3,
-        T_H4,
-        T_H5,
-        T_H6,
-        T_HEAD,
-        T_HTML,
-        T_HR,
-        T_I,
-        T_IMG,
-        T_INPUT,
-        T_INS,
-        T_ISINDEX,
-        T_KBD,
-        T_LANG,
-        T_LH,
-        T_LI,
-        T_LINK,
-        T_MAP,
-        T_MARQUEE,
-        T_MENU,
-        T_META,
-        T_NEXTID,
-        T_NOBR,
-        T_NOEMBED,
-        T_NOFRAME,
-        T_NOFRAMES,
-        T_NOTE,
-        T_OBJECT,
-        T_OL,
-        T_OPTION,
-        T_OVERLAY,
-        T_P,
-        T_PARAM,
-        T_PERSON,
-        T_PRE,
-        T_Q,
-        T_RANGE,
-        T_S,
-        T_SAMP,
-        T_SCRIPT,
-        T_SELECT,
-        T_SMALL,
-        T_SPOT,
-        T_STRONG,
-        T_STYLE,
-        T_SUB,
-        T_SUP,
-        T_TAB,
-        T_TABLE,
-        T_TBODY,
-        T_TD,
-        T_TEXTAREA,
-        T_TFOOT,
-        T_TH,
-        T_THEAD,
-        T_TITLE,
-        T_TR,
-        T_TT,
-        T_U,
-        T_UL,
-        T_VAR,
-        T_WBR,
-        T_IFRAME,
-        T__DOCTYPE,
+        UNKNOWN,
+        A,
+        ABBREV,
+        ACRONYM,
+        ADDRESS,
+        APPLET,
+        AREA,
+        AU,
+        B,
+        BANNER,
+        BASE,
+        BASEFONT,
+        BGSOUND,
+        BIG,
+        BLINK,
+        BLOCKQUOTE,
+        BODY,
+        BR,
+        CAPTION,
+        CENTER,
+        CITE,
+        CODE,
+        COL,
+        COLGROUP,
+        CREDIT,
+        DD,
+        DEL,
+        DFN,
+        DIR,
+        DIV,
+        DL,
+        DT,
+        EM,
+        EMBED,
+        FIG,
+        FN,
+        FONT,
+        FORM,
+        FRAME,
+        FRAMESET,
+        H1,
+        H2,
+        H3,
+        H4,
+        H5,
+        H6,
+        HEAD,
+        HTML,
+        HR,
+        I,
+        IMG,
+        INPUT,
+        INS,
+        ISINDEX,
+        KBD,
+        LANG,
+        LH,
+        LI,
+        LINK,
+        MAP,
+        MARQUEE,
+        MENU,
+        META,
+        NEXTID,
+        NOBR,
+        NOEMBED,
+        NOFRAME,
+        NOFRAMES,
+        NOTE,
+        OBJECT,
+        OL,
+        OPTION,
+        OVERLAY,
+        P,
+        PARAM,
+        PERSON,
+        PRE,
+        Q,
+        RANGE,
+        S,
+        SAMP,
+        SCRIPT,
+        SELECT,
+        SMALL,
+        SPOT,
+        STRONG,
+        STYLE,
+        SUB,
+        SUP,
+        TAB,
+        TABLE,
+        TBODY,
+        TD,
+        TEXTAREA,
+        TFOOT,
+        TH,
+        THEAD,
+        TITLE,
+        TR,
+        TT,
+        U,
+        UL,
+        VAR,
+        WBR,
+        IFRAME,
+        _DOCTYPE,
     }
 
     public static final String P_COLSPAN = new String("colspan");
@@ -119,116 +119,117 @@ public class Tags {
     static Hashtable m_tags = new Hashtable();
 
     static {
-        m_tags.put("A", tags.T_A.ordinal());
-        m_tags.put("ABBREV", tags.T_ABBREV.ordinal());
-        m_tags.put("ACRONYM", tags.T_ACRONYM.ordinal());
-        m_tags.put("ADDRESS", tags.T_ADDRESS.ordinal());
-        m_tags.put("APPLET", tags.T_APPLET.ordinal());
-        m_tags.put("AREA", tags.T_AREA.ordinal());
-        m_tags.put("AU", tags.T_AU.ordinal());
-        m_tags.put("B", tags.T_B.ordinal());
-        m_tags.put("BANNER", tags.T_BANNER.ordinal());
-        m_tags.put("BASE", tags.T_BASE.ordinal());
-        m_tags.put("BASEFONT", tags.T_BASEFONT.ordinal());
-        m_tags.put("BGSOUND", tags.T_BGSOUND.ordinal());
-        m_tags.put("BIG", tags.T_BIG.ordinal());
-        m_tags.put("BLINK", tags.T_BLINK.ordinal());
-        m_tags.put("BLOCKQUOTE", tags.T_BLOCKQUOTE.ordinal());
-        m_tags.put("BODY", tags.T_BODY.ordinal());
-        m_tags.put("BR", tags.T_BR.ordinal());
-        m_tags.put("CAPTION", tags.T_CAPTION.ordinal());
-        m_tags.put("CENTER", tags.T_CENTER.ordinal());
-        m_tags.put("CITE", tags.T_CITE.ordinal());
-        m_tags.put("CODE", tags.T_CODE.ordinal());
-        m_tags.put("COL", tags.T_COL.ordinal());
-        m_tags.put("COLGROUP", tags.T_COLGROUP.ordinal());
-        m_tags.put("CREDIT", tags.T_CREDIT.ordinal());
-        m_tags.put("DD", tags.T_DD.ordinal());
-        m_tags.put("DEL", tags.T_DEL.ordinal());
-        m_tags.put("DFN", tags.T_DFN.ordinal());
-        m_tags.put("DIR", tags.T_DIR.ordinal());
-        m_tags.put("DIV", tags.T_DIV.ordinal());
-        m_tags.put("DL", tags.T_DL.ordinal());
-        m_tags.put("!DOCTYPE", tags.T__DOCTYPE.ordinal());
-        m_tags.put("DT", tags.T_DT.ordinal());
-        m_tags.put("EM", tags.T_EM.ordinal());
-        m_tags.put("EMBED", tags.T_EMBED.ordinal());
-        m_tags.put("FIG", tags.T_FIG.ordinal());
-        m_tags.put("FN", tags.T_FN.ordinal());
-        m_tags.put("FONT", tags.T_FONT.ordinal());
-        m_tags.put("FORM", tags.T_FORM.ordinal());
-        m_tags.put("FRAME", tags.T_FRAME.ordinal());
-        m_tags.put("FRAMESET", tags.T_FRAMESET.ordinal());
-        m_tags.put("H1", tags.T_H1.ordinal());
-        m_tags.put("H2", tags.T_H2.ordinal());
-        m_tags.put("H3", tags.T_H3.ordinal());
-        m_tags.put("H4", tags.T_H4.ordinal());
-        m_tags.put("H5", tags.T_H5.ordinal());
-        m_tags.put("H6", tags.T_H6.ordinal());
-        m_tags.put("HEAD", tags.T_HEAD.ordinal());
-        m_tags.put("HTML", tags.T_HTML.ordinal());
-        m_tags.put("HR", tags.T_HR.ordinal());
-        m_tags.put("I", tags.T_I.ordinal());
-        m_tags.put("IMG", tags.T_IMG.ordinal());
-        m_tags.put("INPUT", tags.T_INPUT.ordinal());
-        m_tags.put("INS", tags.T_INS.ordinal());
-        m_tags.put("ISINDEX", tags.T_ISINDEX.ordinal());
-        m_tags.put("KBD", tags.T_KBD.ordinal());
-        m_tags.put("LANG", tags.T_LANG.ordinal());
-        m_tags.put("LH", tags.T_LH.ordinal());
-        m_tags.put("LI", tags.T_LI.ordinal());
-        m_tags.put("LINK", tags.T_LINK.ordinal());
-        m_tags.put("MAP", tags.T_MAP.ordinal());
-        m_tags.put("MARQUEE", tags.T_MARQUEE.ordinal());
-        m_tags.put("MENU", tags.T_MENU.ordinal());
-        m_tags.put("META", tags.T_META.ordinal());
-        m_tags.put("NEXTID", tags.T_NEXTID.ordinal());
-        m_tags.put("NOBR", tags.T_NOBR.ordinal());
-        m_tags.put("NOEMBED", tags.T_NOEMBED.ordinal());
-        m_tags.put("NOFRAME", tags.T_NOFRAME.ordinal());
-        m_tags.put("NOFRAMES", tags.T_NOFRAMES.ordinal());
-        m_tags.put("NOTE", tags.T_NOTE.ordinal());
-        m_tags.put("OBJECT", tags.T_OBJECT.ordinal());
-        m_tags.put("OL", tags.T_OL.ordinal());
-        m_tags.put("OPTION", tags.T_OPTION.ordinal());
-        m_tags.put("OVERLAY", tags.T_OVERLAY.ordinal());
-        m_tags.put("P", tags.T_P.ordinal());
-        m_tags.put("PARAM", tags.T_PARAM.ordinal());
-        m_tags.put("PERSON", tags.T_PERSON.ordinal());
-        m_tags.put("PRE", tags.T_PRE.ordinal());
-        m_tags.put("Q", tags.T_Q.ordinal());
-        m_tags.put("RANGE", tags.T_RANGE.ordinal());
-        m_tags.put("S", tags.T_S.ordinal());
-        m_tags.put("SAMP", tags.T_SAMP.ordinal());
-        m_tags.put("SCRIPT", tags.T_SCRIPT.ordinal());
-        m_tags.put("SELECT", tags.T_SELECT.ordinal());
-        m_tags.put("SMALL", tags.T_SMALL.ordinal());
-        m_tags.put("SPOT", tags.T_SPOT.ordinal());
-        m_tags.put("STRONG", tags.T_STRONG.ordinal());
-        m_tags.put("STYLE", tags.T_STYLE.ordinal());
-        m_tags.put("SUB", tags.T_SUB.ordinal());
-        m_tags.put("SUP", tags.T_SUP.ordinal());
-        m_tags.put("TAB", tags.T_TAB.ordinal());
-        m_tags.put("TABLE", tags.T_TABLE.ordinal());
-        m_tags.put("TBODY", tags.T_TBODY.ordinal());
-        m_tags.put("TD", tags.T_TD.ordinal());
-        m_tags.put("TEXTAREA", tags.T_TEXTAREA.ordinal());
-        m_tags.put("TFOOT", tags.T_TFOOT.ordinal());
-        m_tags.put("TH", tags.T_TH.ordinal());
-        m_tags.put("THEAD", tags.T_THEAD.ordinal());
-        m_tags.put("TITLE", tags.T_TITLE.ordinal());
-        m_tags.put("TR", tags.T_TR.ordinal());
-        m_tags.put("TT", tags.T_TT.ordinal());
-        m_tags.put("U", tags.T_U.ordinal());
-        m_tags.put("UL", tags.T_UL.ordinal());
-        m_tags.put("VAR", tags.T_VAR.ordinal());
-        m_tags.put("WBR", tags.T_WBR.ordinal());
+        m_tags.put("A", tags.A.ordinal());
+        m_tags.put("ABBREV", tags.ABBREV.ordinal());
+        m_tags.put("ACRONYM", tags.ACRONYM.ordinal());
+        m_tags.put("ADDRESS", tags.ADDRESS.ordinal());
+        m_tags.put("APPLET", tags.APPLET.ordinal());
+        m_tags.put("AREA", tags.AREA.ordinal());
+        m_tags.put("AU", tags.AU.ordinal());
+        m_tags.put("B", tags.B.ordinal());
+        m_tags.put("BANNER", tags.BANNER.ordinal());
+        m_tags.put("BASE", tags.BASE.ordinal());
+        m_tags.put("BASEFONT", tags.BASEFONT.ordinal());
+        m_tags.put("BGSOUND", tags.BGSOUND.ordinal());
+        m_tags.put("BIG", tags.BIG.ordinal());
+        m_tags.put("BLINK", tags.BLINK.ordinal());
+        m_tags.put("BLOCKQUOTE", tags.BLOCKQUOTE.ordinal());
+        m_tags.put("BODY", tags.BODY.ordinal());
+        m_tags.put("BR", tags.BR.ordinal());
+        m_tags.put("CAPTION", tags.CAPTION.ordinal());
+        m_tags.put("CENTER", tags.CENTER.ordinal());
+        m_tags.put("CITE", tags.CITE.ordinal());
+        m_tags.put("CODE", tags.CODE.ordinal());
+        m_tags.put("COL", tags.COL.ordinal());
+        m_tags.put("COLGROUP", tags.COLGROUP.ordinal());
+        m_tags.put("CREDIT", tags.CREDIT.ordinal());
+        m_tags.put("DD", tags.DD.ordinal());
+        m_tags.put("DEL", tags.DEL.ordinal());
+        m_tags.put("DFN", tags.DFN.ordinal());
+        m_tags.put("DIR", tags.DIR.ordinal());
+        m_tags.put("DIV", tags.DIV.ordinal());
+        m_tags.put("DL", tags.DL.ordinal());
+        m_tags.put("!DOCTYPE", tags._DOCTYPE.ordinal());
+        m_tags.put("DT", tags.DT.ordinal());
+        m_tags.put("EM", tags.EM.ordinal());
+        m_tags.put("EMBED", tags.EMBED.ordinal());
+        m_tags.put("FIG", tags.FIG.ordinal());
+        m_tags.put("FN", tags.FN.ordinal());
+        m_tags.put("FONT", tags.FONT.ordinal());
+        m_tags.put("FORM", tags.FORM.ordinal());
+        m_tags.put("FRAME", tags.FRAME.ordinal());
+        m_tags.put("FRAMESET", tags.FRAMESET.ordinal());
+        m_tags.put("H1", tags.H1.ordinal());
+        m_tags.put("H2", tags.H2.ordinal());
+        m_tags.put("H3", tags.H3.ordinal());
+        m_tags.put("H4", tags.H4.ordinal());
+        m_tags.put("H5", tags.H5.ordinal());
+        m_tags.put("H6", tags.H6.ordinal());
+        m_tags.put("HEAD", tags.HEAD.ordinal());
+        m_tags.put("HTML", tags.HTML.ordinal());
+        m_tags.put("HR", tags.HR.ordinal());
+        m_tags.put("I", tags.I.ordinal());
+        m_tags.put("IMG", tags.IMG.ordinal());
+        m_tags.put("INPUT", tags.INPUT.ordinal());
+        m_tags.put("INS", tags.INS.ordinal());
+        m_tags.put("ISINDEX", tags.ISINDEX.ordinal());
+        m_tags.put("KBD", tags.KBD.ordinal());
+        m_tags.put("LANG", tags.LANG.ordinal());
+        m_tags.put("LH", tags.LH.ordinal());
+        m_tags.put("LI", tags.LI.ordinal());
+        m_tags.put("LINK", tags.LINK.ordinal());
+        m_tags.put("MAP", tags.MAP.ordinal());
+        m_tags.put("MARQUEE", tags.MARQUEE.ordinal());
+        m_tags.put("MENU", tags.MENU.ordinal());
+        m_tags.put("META", tags.META.ordinal());
+        m_tags.put("NEXTID", tags.NEXTID.ordinal());
+        m_tags.put("NOBR", tags.NOBR.ordinal());
+        m_tags.put("NOEMBED", tags.NOEMBED.ordinal());
+        m_tags.put("NOFRAME", tags.NOFRAME.ordinal());
+        m_tags.put("NOFRAMES", tags.NOFRAMES.ordinal());
+        m_tags.put("NOTE", tags.NOTE.ordinal());
+        m_tags.put("OBJECT", tags.OBJECT.ordinal());
+        m_tags.put("OL", tags.OL.ordinal());
+        m_tags.put("OPTION", tags.OPTION.ordinal());
+        m_tags.put("OVERLAY", tags.OVERLAY.ordinal());
+        m_tags.put("P", tags.P.ordinal());
+        m_tags.put("PARAM", tags.PARAM.ordinal());
+        m_tags.put("PERSON", tags.PERSON.ordinal());
+        m_tags.put("PRE", tags.PRE.ordinal());
+        m_tags.put("Q", tags.Q.ordinal());
+        m_tags.put("RANGE", tags.RANGE.ordinal());
+        m_tags.put("S", tags.S.ordinal());
+        m_tags.put("SAMP", tags.SAMP.ordinal());
+        m_tags.put("SCRIPT", tags.SCRIPT.ordinal());
+        m_tags.put("SELECT", tags.SELECT.ordinal());
+        m_tags.put("SMALL", tags.SMALL.ordinal());
+        m_tags.put("SPOT", tags.SPOT.ordinal());
+        m_tags.put("STRONG", tags.STRONG.ordinal());
+        m_tags.put("STYLE", tags.STYLE.ordinal());
+        m_tags.put("SUB", tags.SUB.ordinal());
+        m_tags.put("SUP", tags.SUP.ordinal());
+        m_tags.put("TAB", tags.TAB.ordinal());
+        m_tags.put("TABLE", tags.TABLE.ordinal());
+        m_tags.put("TBODY", tags.TBODY.ordinal());
+        m_tags.put("TD", tags.TD.ordinal());
+        m_tags.put("TEXTAREA", tags.TEXTAREA.ordinal());
+        m_tags.put("TFOOT", tags.TFOOT.ordinal());
+        m_tags.put("TH", tags.TH.ordinal());
+        m_tags.put("THEAD", tags.THEAD.ordinal());
+        m_tags.put("TITLE", tags.TITLE.ordinal());
+        m_tags.put("TR", tags.TR.ordinal());
+        m_tags.put("TT", tags.TT.ordinal());
+        m_tags.put("U", tags.U.ordinal());
+        m_tags.put("UL", tags.UL.ordinal());
+        m_tags.put("VAR", tags.VAR.ordinal());
+        m_tags.put("WBR", tags.WBR.ordinal());
+        m_tags.put("UNKNOWN", tags.UNKNOWN.ordinal());
 
-        m_tags.put("IFRAME", tags.T_IFRAME.ordinal());
+        m_tags.put("IFRAME", tags.IFRAME.ordinal());
     }
 
-    public static int get(String tagName){
-        return Integer.parseInt((String) m_tags.get(tagName));
+    public static int get(String tagName) {
+        return (Integer)m_tags.get(tagName);
     }
 
 

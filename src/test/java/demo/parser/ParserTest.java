@@ -53,7 +53,7 @@ public class ParserTest
 				try
 				{
 					tok.parseTag(tok.getStringValue(), tag);
-					if (tag.getTagType() == Tags.tags.T_UNKNOWN.ordinal())
+					if (tag.getTagType() == Tags.tags.UNKNOWN.ordinal())
 						throw new HtmlException("unkown tag");
 					if (tag.isEmpty())
 						System.out.print("EMPTY ");
@@ -105,7 +105,7 @@ public class ParserTest
 					try
 					{
 						tok.parseTag(tok.getStringValue(), tag);
-						if (tag.getTagType() == Tags.tags.T_UNKNOWN.ordinal())
+						if (tag.getTagType() == Tags.tags.UNKNOWN.ordinal())
 							throw new HtmlException("unkown tag");
 						System.out.print(tag.toString());
 					}
@@ -159,7 +159,7 @@ public class ParserTest
 					try
 					{
 						tok.parseTag(tok.getStringValue(), tag);
-						if (tag.getTagType() == Tags.tags.T_UNKNOWN.ordinal())
+						if (tag.getTagType() == Tags.tags.UNKNOWN.ordinal())
 							throw new HtmlException("unkown tag");
 						System.out.print(tag.toString());
 					}
@@ -235,7 +235,7 @@ public class ParserTest
 					try
 					{
 						tok.parseTag(tok.getStringValue(), tag);
-						if (tag.getTagType() == Tags.tags.T_UNKNOWN.ordinal())
+						if (tag.getTagType() == Tags.tags.UNKNOWN.ordinal())
 							throw new HtmlException("unkown tag");
 						System.out.print(tag.toString());
 					}

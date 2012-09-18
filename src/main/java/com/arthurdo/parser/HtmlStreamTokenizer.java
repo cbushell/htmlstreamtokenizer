@@ -97,17 +97,17 @@ public class HtmlStreamTokenizer {
     public static final int TT_ENTITYREFERENCE = -6;
 
     /**
+     * @param in input stream
      * @deprecated use HtmlStreamTokenizer(Reader) instead.
-     * This version of the constructor can lead to 10x slower code
-     * because of the InputStreamReader wrapper.
-     * @param    in input stream
+     *             This version of the constructor can lead to 10x slower code
+     *             because of the InputStreamReader wrapper.
      */
     public HtmlStreamTokenizer(InputStream in) {
         this(new BufferedReader(new InputStreamReader(in)));
     }
 
     /**
-     * @param    in Reader. The input is assumed to be buffered as needed.
+     * @param in Reader. The input is assumed to be buffered as needed.
      */
     public HtmlStreamTokenizer(Reader in) {
         m_in = in;
@@ -147,9 +147,9 @@ public class HtmlStreamTokenizer {
     }
 
     /**
-     * @deprecated white space is now returned as TT_TEXT. This buffer is always
-     * empty.
      * @return any white space accumulated since last call to nextToken
+     * @deprecated white space is now returned as TT_TEXT. This buffer is always
+     *             empty.
      */
     public final StringBuffer getWhiteSpace() {
         return m_whitespace;
@@ -157,7 +157,7 @@ public class HtmlStreamTokenizer {
 
     /**
      * @return current line number. Every time nextToken() sees a new
-     * line character ('\n'), it increments the line number.
+     *         line character ('\n'), it increments the line number.
      */
     public int getLineNumber() {
         return m_lineno;
@@ -180,8 +180,8 @@ public class HtmlStreamTokenizer {
     }
 
     /**
-     * @throws IOException if error reading input stream.
      * @return the next token
+     * @throws IOException if error reading input stream.
      */
     public int nextToken()
             throws IOException {
@@ -388,9 +388,9 @@ public class HtmlStreamTokenizer {
      * a newly created HtmlTag object is so that you can create your own
      * tag class derived from HtmlTag if desired.
      *
+     * @param sbuf text buffer to parse
+     * @param tag  parse the text buffer and store the result in this object
      * @throws HtmlException if malformed tag.
-     * @param    sbuf text buffer to parse
-     * @param    tag parse the text buffer and store the result in this object
      */
     public void parseTag(StringBuffer sbuf, HtmlTag tag)
             throws HtmlException {
@@ -431,7 +431,7 @@ public class HtmlStreamTokenizer {
      * Replaces HTML escape sequences with its character equivalent, e.g.
      * <b>&amp;amp;copy;</b> becomes <b>&amp;copy;</b>.
      *
-     * @param    buf text buffer to unescape
+     * @param buf text buffer to unescape
      * @return a string with all HTML escape sequences removed
      */
     public static String unescape(String buf) {
@@ -449,7 +449,7 @@ public class HtmlStreamTokenizer {
      * Replaces HTML escape sequences with its character equivalent, e.g.
      * <b>&amp;copy;</b> becomes <b>&copy;</b>.
      *
-     * @param    buf will remove all HTML escape sequences from this buffer
+     * @param buf will remove all HTML escape sequences from this buffer
      */
     public static void unescape(StringBuffer buf) {
         int len = buf.length();

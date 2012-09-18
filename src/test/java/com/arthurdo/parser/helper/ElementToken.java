@@ -17,7 +17,7 @@ public class ElementToken extends Token {
         {
             HtmlTag tag = new HtmlTag();
             tok.parseTag(tok.getStringValue(), tag);
-            if (tag.getTagType() == Tags.tags.T_UNKNOWN.ordinal())
+            if (tag.getTagType() == Tags.tags.UNKNOWN.ordinal())
                 throw new HtmlException("this will get caught down below");
             if (tag.isEmpty()) {
                 _empty = true;

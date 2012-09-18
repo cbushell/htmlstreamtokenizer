@@ -23,7 +23,16 @@ import java.util.Enumeration;
 import java.util.Vector;
 
 public class HtmlTag {
-    public HtmlTag() {
+
+    private String m_tag = null;
+    private int m_ttype = Tags.tags.UNKNOWN.ordinal();
+    private boolean m_endtag = false;
+    private Vector m_names = new Vector();
+    private Vector m_values = new Vector();
+    private boolean m_empty = false;
+
+    public HtmlTag(){
+
     }
 
     public HtmlTag(HtmlTag orig) {
@@ -32,13 +41,10 @@ public class HtmlTag {
         m_endtag = orig.m_endtag;
         m_names = (Vector) orig.m_names.clone();
         m_values = (Vector) orig.m_values.clone();
-//		m_params = (Hashtable)orig.m_params.clone();
-//		m_originalParamNames = (Hashtable)orig.m_originalParamNames.clone();
         m_empty = orig.m_empty;
     }
 
-    public void setTag(String tag)
-            throws HtmlException {
+    public void setTag(String tag) throws HtmlException {
         try {
             m_tag = tag;
             Object value = Tags.m_tags.get(tag.toUpperCase());
@@ -143,13 +149,12 @@ public class HtmlTag {
 
     public void reset() {
         m_tag = null;
-        m_ttype = Tags.tags.T_UNKNOWN.ordinal();
+        m_ttype = Tags.tags.UNKNOWN.ordinal();
         m_endtag = false;
         m_names.removeAllElements();
         m_values.removeAllElements();
         m_empty = false;
     }
-
 
     protected void setEndTag(boolean endtag) {
         m_endtag = endtag;
@@ -167,13 +172,6 @@ public class HtmlTag {
 
         return -1;
     }
-
-    private String m_tag = null;
-    private int m_ttype = Tags.tags.T_UNKNOWN.ordinal();
-    private boolean m_endtag = false;
-    private Vector m_names = new Vector();
-    private Vector m_values = new Vector();
-    private boolean m_empty = false;
 
 }
 

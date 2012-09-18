@@ -79,7 +79,7 @@ public class Table {
             int ttype = tok.getTokenType();
             if (ttype == HtmlStreamTokenizer.TT_TAG) {
                 tok.parseTag(tok.getStringValue(), tag);
-                if ((tag.getTagType() == Tags.get("T_TABLE")) && !tag.isEndTag())
+                if ((tag.getTagType() == Tags.get("TABLE")) && !tag.isEndTag())
                     parseTable(tok, new HtmlTag(tag));
             }
         }
@@ -99,12 +99,12 @@ public class Table {
                     int tagtype = tag.getTagType();
                     boolean isEndTag = tag.isEndTag();
 
-                    if ((tagtype == Tags.get("T_TR")) && !isEndTag) {
+                    if ((tagtype == Tags.get("TR")) && !isEndTag) {
                         m_rowTags.addElement(new HtmlTag(tag));
                         newRow();
                         if (!parseRow())
                             break;
-                    } else if (tagtype == Tags.get("T_TABLE") && isEndTag) {
+                    } else if (tagtype == Tags.get("TABLE") && isEndTag) {
                         break;
                     } else {
                         // otherwise, data is considered bad and thrown away
@@ -134,10 +134,10 @@ public class Table {
     }
 
     /**
-     * @param    row the row to get
+     * @param row the row to get
      * @return the original &lt;TR&gt; tag for this row or null
-     * if this is a phantom row, i.e. a row that doesn't
-     * have any real cells.
+     *         if this is a phantom row, i.e. a row that doesn't
+     *         have any real cells.
      */
     public HtmlTag getRowTag(int row) {
         if (row < m_rowTags.size())
@@ -160,10 +160,10 @@ public class Table {
     }
 
     /**
-     * @param    row row to get
-     * @param    col column to get
+     * @param row row to get
+     * @param col column to get
      * @return the cell located at the specified location in the table
-     * or null if there is no cell due to uneven spans.
+     *         or null if there is no cell due to uneven spans.
      */
     public TableCell elementAt(int row, int col) {
         return m_elements[row][col];
@@ -266,13 +266,13 @@ public class Table {
                     int tagtype = tag.getTagType();
                     boolean isEndTag = tag.isEndTag();
 
-                    if (tagtype == Tags.get("T_TR")) {
+                    if (tagtype == Tags.get("TR")) {
                         if (!isEndTag)
                             pushBackToken();
                         // row ended, continue with next row
                         continueParsing = true;
                         break;
-                    } else if (tagtype == Tags.get("T_TD") || tagtype == Tags.get("T_TH")) {
+                    } else if (tagtype == Tags.get("TD") || tagtype == Tags.get("TH")) {
                         if (!isEndTag) {
                             beginCell(tag);
                             if (!parseCol()) {
@@ -305,19 +305,19 @@ public class Table {
                     int tagtype = tag.getTagType();
                     boolean isEndTag = tag.isEndTag();
 
-                    if (tagtype == Tags.get("T_TR")) {
+                    if (tagtype == Tags.get("TR")) {
                         if (!isEndTag)
                             pushBackToken();
                         // column ended
                         continueParsing = true;
                         break;
-                    } else if (tagtype == Tags.get("T_TD") || tagtype == Tags.get("T_TH")) {
+                    } else if (tagtype == Tags.get("TD") || tagtype == Tags.get("TH")) {
                         if (!isEndTag)
                             pushBackToken();
                         // column ended
                         continueParsing = true;
                         break;
-                    } else if (tagtype == Tags.get("T_TABLE")) {
+                    } else if (tagtype == Tags.get("TABLE")) {
                         if (isEndTag) {
                             continueParsing = false;
                             break;

@@ -75,9 +75,9 @@ public class TableCell {
 
     /**
      * @return if <i>isSpanned()</i> is true then function
-     * returns the row of the actual cell that
-     * spans this pseudo cell otherwise it returns
-     * the number of rows this cell spans.
+     *         returns the row of the actual cell that
+     *         spans this pseudo cell otherwise it returns
+     *         the number of rows this cell spans.
      */
     public int getRowSpan() {
         return m_rowspan;
@@ -85,9 +85,9 @@ public class TableCell {
 
     /**
      * @return if <i>isSpanned()</i> is true then function
-     * returns the column of the actual cell that
-     * spans this pseudo cell otherwise it returns
-     * the number of columns this cell spans.
+     *         returns the column of the actual cell that
+     *         spans this pseudo cell otherwise it returns
+     *         the number of columns this cell spans.
      */
     public int getColSpan() {
         return m_colspan;
@@ -108,19 +108,19 @@ public class TableCell {
     }
 
     /**
-     * @param    obj element to add
+     * @param obj element to add
      */
     public void addElement(Object obj) {
         m_content.addElement(obj);
     }
 
     /**
-     * @param    index index of element
+     * @param index index of element
      * @return a cell element, normally this will be either
-     * a String, HtmlTag, or HtmlTable object (comments are thrown
-     * away) but new object types could be added in the
-     * future. Use <i>instanceof</i>
-     * to determine the particular object type.
+     *         a String, HtmlTag, or HtmlTable object (comments are thrown
+     *         away) but new object types could be added in the
+     *         future. Use <i>instanceof</i>
+     *         to determine the particular object type.
      */
     public Object elementAt(int index) {
         return m_content.elementAt(index);
