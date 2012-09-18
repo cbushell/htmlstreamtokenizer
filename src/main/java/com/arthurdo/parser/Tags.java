@@ -113,43 +113,8 @@ public class Tags {
         T__DOCTYPE,
     }
 
-    public static final String P_ALIGN = new String("align");
-    public static final String P_BACKGROUND = new String("background");
-    public static final String P_BORDER = new String("border");
-    public static final String P_CHECKED = new String("checked");
-    public static final String P_CLEAR = new String("clear");
-    public static final String P_CODE = new String("code");
-    public static final String P_COLS = new String("cols");
     public static final String P_COLSPAN = new String("colspan");
-    public static final String P_FACE = new String("face");
-    public static final String P_HEIGHT = new String("height");
-    public static final String P_HREF = new String("href");
-    public static final String P_LANGUAGE = new String("language");
-    public static final String P_LOWSRC = new String("lowsrc");
-    public static final String P_MAXLENGTH = new String("maxlength");
-    public static final String P_MULTIPLE = new String("multiple");
-    public static final String P_NAME = new String("name");
-    public static final String P_ROWS = new String("rows");
     public static final String P_ROWSPAN = new String("rowspan");
-    public static final String P_SIZE = new String("size");
-    public static final String P_SRC = new String("src");
-    public static final String P_TARGET = new String("target");
-    public static final String P_TYPE = new String("type");
-    public static final String P_VALUE = new String("value");
-    public static final String P_VALUETYPE = new String("valuetype");
-    public static final String P_WIDTH = new String("width");
-
-    public static final String P_CITE = new String("cite");
-    public static final String P_PROFILE = new String("profile");
-    public static final String P_ACTION = new String("action");
-    public static final String P_LONGDESC = new String("longdesc");
-    public static final String P_FOR = new String("for");
-    public static final String P_USEMAP = new String("usemap");
-    public static final String P_CODEBASE = new String("codebase");
-    public static final String P_DATA = new String("data");
-    public static final String P_ARCHIVE = new String("archive");
-    public static final String P_REL = new String("rel");
-    public static final String P_REV = new String("rev");
 
     static Hashtable m_tags = new Hashtable();
 
