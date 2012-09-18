@@ -3,6 +3,7 @@ package com.arthurdo.parser.helper;
 import com.arthurdo.parser.HtmlException;
 import com.arthurdo.parser.HtmlStreamTokenizer;
 import com.arthurdo.parser.HtmlTag;
+import com.arthurdo.parser.Tags;
 
 public class ElementToken extends Token {
 
@@ -16,7 +17,7 @@ public class ElementToken extends Token {
         {
             HtmlTag tag = new HtmlTag();
             tok.parseTag(tok.getStringValue(), tag);
-            if (tag.getTagType() == HtmlTag.T_UNKNOWN)
+            if (tag.getTagType() == Tags.tags.T_UNKNOWN.ordinal())
                 throw new HtmlException("this will get caught down below");
             if (tag.isEmpty()) {
                 _empty = true;

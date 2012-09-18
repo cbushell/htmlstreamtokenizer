@@ -157,7 +157,7 @@ public class ParserTestMinusDuplication
                     try
                     {
                         tok.parseTag(tok.getStringValue(), tag);
-                        if (tag.getTagType() == HtmlTag.T_UNKNOWN)
+                        if (tag.getTagType() == Tags.tags.T_UNKNOWN.ordinal())
                             throw new HtmlException("unkown tag");
                         if (tag.isEmpty())
                             out.print("EMPTY ");
